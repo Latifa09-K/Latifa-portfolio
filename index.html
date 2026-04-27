@@ -2116,6 +2116,108 @@ html[lang="en"] #skills .cert-p{
   #about .focus-pills span::after{ display: none !important; }
 }
 
+
+/* ===== FINAL INTERACTIVE VERSION: mobile-friendly interactions ===== */
+
+/* Remove certificate check icons */
+#skills .cert-ico{
+  display: none !important;
+}
+
+#skills .cert-p{
+  justify-content: center !important;
+  padding: 16px 24px !important;
+}
+
+/* Typing line under the intro role */
+.signature-typing{
+  margin-top: 10px;
+  color: var(--cyan);
+  font-family: 'Outfit', 'IBM Plex Sans Arabic', sans-serif;
+  font-weight: 800;
+  font-size: clamp(.86rem, 2vw, 1.05rem);
+  min-height: 1.6em;
+  letter-spacing: .03em;
+  opacity: .95;
+}
+
+.signature-typing::after{
+  content: "|";
+  margin-inline-start: 5px;
+  color: var(--purple);
+  animation: blinkCaret .9s infinite;
+}
+
+@keyframes blinkCaret{
+  0%, 45%{ opacity: 1; }
+  46%, 100%{ opacity: 0; }
+}
+
+/* Touch glow for pills/cards on mobile */
+.skill-pills span,
+.focus-pills span,
+.contact-card,
+.cert-p{
+  -webkit-tap-highlight-color: transparent;
+}
+
+.is-tapped{
+  transform: scale(.98) !important;
+  border-color: rgba(56,189,248,.55) !important;
+  box-shadow: 0 0 22px rgba(56,189,248,.16) !important;
+}
+
+/* Mobile experience accordion */
+@media (max-width: 760px){
+  #experience .card{
+    cursor: pointer;
+    position: relative;
+  }
+
+  #experience .card::after{
+    content: "اضغطي للتفاصيل";
+    display: block;
+    margin-top: 14px;
+    color: var(--cyan);
+    font-size: .74rem;
+    font-weight: 900;
+    opacity: .85;
+  }
+
+  html[lang="en"] #experience .card::after{
+    content: "Tap for details";
+  }
+
+  #experience .card .bullets,
+  #experience .card .note{
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height .45s ease, opacity .35s ease, margin .35s ease;
+    margin-top: 0 !important;
+  }
+
+  #experience .card.open .bullets{
+    max-height: 520px;
+    opacity: 1;
+    margin-top: 14px !important;
+  }
+
+  #experience .card.open .note{
+    max-height: 160px;
+    opacity: 1;
+    margin-top: 14px !important;
+  }
+
+  #experience .card.open::after{
+    content: "إغلاق التفاصيل";
+  }
+
+  html[lang="en"] #experience .card.open::after{
+    content: "Close details";
+  }
+}
+
 </style>
 
 
@@ -2161,6 +2263,7 @@ html[lang="en"] #skills .cert-p{
         <div class="portfolio-word" data-ar="ملف أعمال" data-en="Portfolio">ملف أعمال</div>
         <h1 class="signature-name">Latifa Alanazi</h1>
         <p class="signature-sub" data-ar="مهندسة برمجيات · مختبرة برمجيات معتمدة" data-en="Software Engineering · Certified Software Tester">مهندسة برمجيات · مختبرة برمجيات معتمدة</p>
+        <div class="signature-typing" aria-label="dynamic role"></div>
         <div class="scroll-cue" data-ar="مرر للأسفل" data-en="Scroll to explore">مرر للأسفل</div>
       </div>
     </section>
@@ -2548,6 +2651,67 @@ html[lang="en"] #skills .cert-p{
     }
   </script>
 
+
+
+<script>
+/* Final mobile interactions */
+(function(){
+  const typingEl = document.querySelector('.signature-typing');
+  const phrases = {
+    ar: ['مختبرة برمجيات', 'مهندسة برمجيات', 'مهتمة بجودة المنتج'],
+    en: ['Certified Software Tester', 'Software Engineer', 'Quality-minded Builder']
+  };
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function currentLang(){
+    return document.documentElement.lang === 'en' ? 'en' : 'ar';
+  }
+
+  function typeLoop(){
+    if(!typingEl) return;
+    const list = phrases[currentLang()];
+    const phrase = list[phraseIndex % list.length];
+
+    if(!deleting){
+      charIndex++;
+      typingEl.textContent = phrase.slice(0, charIndex);
+      if(charIndex >= phrase.length){
+        deleting = true;
+        setTimeout(typeLoop, 1200);
+        return;
+      }
+    } else {
+      charIndex--;
+      typingEl.textContent = phrase.slice(0, charIndex);
+      if(charIndex <= 0){
+        deleting = false;
+        phraseIndex++;
+      }
+    }
+    setTimeout(typeLoop, deleting ? 45 : 75);
+  }
+  typeLoop();
+
+  // Mobile accordion for experience cards
+  document.querySelectorAll('#experience .card').forEach(card => {
+    card.addEventListener('click', function(e){
+      if(window.innerWidth > 760) return;
+      card.classList.toggle('open');
+    });
+  });
+
+  // Touch glow for interactive elements
+  const tapTargets = document.querySelectorAll('.skill-pills span, .focus-pills span, .contact-card, .cert-p');
+  tapTargets.forEach(el => {
+    el.addEventListener('touchstart', () => el.classList.add('is-tapped'), {passive:true});
+    el.addEventListener('touchend', () => setTimeout(() => el.classList.remove('is-tapped'), 180), {passive:true});
+    el.addEventListener('touchcancel', () => el.classList.remove('is-tapped'), {passive:true});
+  });
+})();
+</script>
 
 </body>
 </html>
