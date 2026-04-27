@@ -2346,58 +2346,136 @@ html[lang="en"] .signature-sub{
 }
 
 
-</style>
-
-
-
-<style id="about_blend_patch">
-/* FINAL: make About section blend with the whole site */
+/* ===== FINAL ABOUT BACKGROUND + SNAPSHOT CARD POLISH ONLY ===== */
 #about{
-  background: var(--bg) !important;
-  background-color: var(--bg) !important;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(56,189,248,.09), transparent 32%),
+    radial-gradient(circle at 86% 72%, rgba(99,102,241,.10), transparent 36%),
+    linear-gradient(180deg, #05070d 0%, #071426 50%, #090d17 100%) !important;
   position: relative !important;
   overflow: hidden !important;
 }
 
-#about::before,
-#about::after{
-  display: none !important;
-  content: none !important;
+#about::before{
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    linear-gradient(90deg, rgba(56,189,248,.02) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(56,189,248,.015) 1px, transparent 1px) !important;
+  background-size: 54px 54px !important;
+  opacity: .18 !important;
+  pointer-events: none !important;
 }
 
-/* remove the visible section color cut */
+#about::after{
+  content: "" !important;
+  position: absolute !important;
+  width: 480px !important;
+  height: 480px !important;
+  right: -250px !important;
+  top: 22% !important;
+  border-radius: 999px !important;
+  background: radial-gradient(circle, rgba(59,130,246,.16), rgba(124,58,237,.055) 42%, transparent 70%) !important;
+  filter: blur(8px) !important;
+  opacity: .62 !important;
+  pointer-events: none !important;
+}
+
 #about .wrap,
 #about .about-redesign{
-  background: transparent !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
-/* keep the card, but make it match the original site cards */
 #about .about-focus-card{
-  background: var(--card) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: none !important;
-  backdrop-filter: blur(10px) !important;
+  background: linear-gradient(145deg, rgba(8,18,38,.72), rgba(14,18,36,.50)) !important;
+  border: 1px solid rgba(56,189,248,.18) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.025) inset,
+    0 28px 70px rgba(0,0,0,.22),
+    0 0 42px rgba(56,189,248,.055) !important;
+  backdrop-filter: blur(16px) !important;
 }
 
-/* inner cards blend instead of looking like a different section */
+#about .focus-pills span{
+  background: rgba(10,24,48,.72) !important;
+  border: 1px solid rgba(56,189,248,.28) !important;
+  color: rgba(248,250,252,.93) !important;
+  box-shadow: 0 0 16px rgba(56,189,248,.045) !important;
+}
+
 #about .about-info-mini div,
 #about .snapshot-card{
-  background: rgba(15, 22, 35, 0.38) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: none !important;
+  background: linear-gradient(135deg, rgba(10,20,42,.62), rgba(18,21,42,.46)) !important;
+  border: 1px solid rgba(56,189,248,.14) !important;
+  border-radius: 20px !important;
+  padding: 20px !important;
+  box-shadow: 0 12px 36px rgba(0,0,0,.12) !important;
 }
 
-/* softer pills, same palette */
-#about .focus-pills span{
-  background: rgba(15, 22, 35, 0.44) !important;
-  border: 1px solid rgba(56, 189, 248, 0.18) !important;
-  box-shadow: none !important;
+#about .about-info-mini small,
+#about .snap-label{
+  color: rgba(56,189,248,.88) !important;
+  font-weight: 800 !important;
 }
 
-/* reduce awkward spacing between welcome and about on mobile */
+#about .about-info-mini strong,
+#about .snapshot-card strong{
+  color: #f8fafc !important;
+  font-weight: 900 !important;
+}
+
 @media (max-width: 760px){
-  #about{
-    padding-top: calc(var(--nav-h) + 28px) !important;
+  #about::after{
+    width: 360px !important;
+    height: 360px !important;
+    right: -215px !important;
+    top: 27% !important;
+    opacity: .55 !important;
+  }
+  #about .about-focus-card{
+    border-radius: 24px !important;
+    padding: 22px !important;
+  }
+  #about .about-info-mini,
+  #about .snapshot-grid{
+    grid-template-columns: 1fr !important;
+  }
+}
+
+</style>
+
+
+
+<style id="cert_title_patch">
+.cert-title{
+  text-align:center !important;
+  margin:38px 0 18px !important;
+  font-size:1.05rem !important;
+  font-weight:900 !important;
+  color:var(--cyan) !important;
+  letter-spacing:.05em !important;
+}
+.cert-title::before,
+.cert-title::after{
+  content:"" !important;
+  display:inline-block !important;
+  width:44px !important;
+  height:1px !important;
+  background:rgba(56,189,248,.55) !important;
+  margin:0 12px !important;
+  vertical-align:middle !important;
+}
+@media(max-width:560px){
+  .cert-title{
+    margin:32px 0 16px !important;
+    font-size:.95rem !important;
+  }
+  .cert-title::before,
+  .cert-title::after{
+    width:32px !important;
+    margin:0 9px !important;
   }
 }
 </style>
@@ -2634,6 +2712,8 @@ html[lang="en"] .signature-sub{
             </div>
           </div>
         </div>
+
+        <div class="cert-title" data-ar="الشهادات المهنية" data-en="Professional Certifications">الشهادات المهنية</div>
 
         <div class="certs-row reveal">
           <div class="cert-p">
