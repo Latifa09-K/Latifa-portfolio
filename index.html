@@ -1847,6 +1847,213 @@ html[lang="ar"] #skills .skills-column li::before{
   }
 }
 
+
+/* ===== FINAL ABOUT + SKILLS REDESIGN ===== */
+#about .about-redesign{
+  display: grid !important;
+  grid-template-columns: 1.05fr .95fr !important;
+  gap: clamp(26px, 5vw, 58px) !important;
+  align-items: center !important;
+}
+
+html[lang="ar"] #about .about-main{
+  text-align: right !important;
+}
+
+html[lang="en"] #about .about-main{
+  text-align: left !important;
+}
+
+.about-focus-card{
+  border: 1px solid rgba(255,255,255,.09) !important;
+  border-radius: 28px !important;
+  padding: clamp(22px, 4vw, 34px) !important;
+  background:
+    radial-gradient(240px 150px at 20% 20%, rgba(56,189,248,.12), transparent 65%),
+    radial-gradient(220px 150px at 82% 84%, rgba(167,139,250,.12), transparent 70%),
+    rgba(15,22,35,.64) !important;
+  box-shadow: 0 20px 80px rgba(0,0,0,.22) !important;
+}
+
+.focus-title{
+  color: var(--cyan) !important;
+  font-weight: 900 !important;
+  font-size: .9rem !important;
+  margin-bottom: 18px !important;
+}
+
+.focus-pills,
+.skill-pills{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+}
+
+html[lang="ar"] .focus-pills,
+html[lang="ar"] .skill-pills{
+  justify-content: flex-end !important;
+}
+
+html[lang="en"] .focus-pills,
+html[lang="en"] .skill-pills{
+  justify-content: flex-start !important;
+}
+
+.focus-pills span,
+.skill-pills span{
+  border: 1px solid rgba(56,189,248,.22) !important;
+  background: rgba(56,189,248,.055) !important;
+  color: rgba(238,242,248,.88) !important;
+  border-radius: 999px !important;
+  padding: 8px 13px !important;
+  font-size: .78rem !important;
+  font-weight: 800 !important;
+  transition: .2s ease !important;
+}
+
+.focus-pills span:hover,
+.skill-pills span:hover{
+  transform: translateY(-2px) !important;
+  border-color: rgba(56,189,248,.42) !important;
+  background: rgba(56,189,248,.09) !important;
+}
+
+.about-info-mini{
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 12px !important;
+  margin-top: 24px !important;
+}
+
+.about-info-mini div{
+  border: 1px solid rgba(255,255,255,.08) !important;
+  background: rgba(255,255,255,.028) !important;
+  border-radius: 16px !important;
+  padding: 14px !important;
+}
+
+.about-info-mini small{
+  display: block !important;
+  color: var(--muted2) !important;
+  font-size: .72rem !important;
+  margin-bottom: 5px !important;
+}
+
+.about-info-mini strong{
+  color: var(--text) !important;
+  font-size: .84rem !important;
+}
+
+.skills-showcase{
+  width: 100% !important;
+  max-width: 980px !important;
+  margin: 40px auto 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 16px !important;
+}
+
+.skills-group{
+  border: 1px solid rgba(255,255,255,.09) !important;
+  background:
+    linear-gradient(135deg, rgba(56,189,248,.045), transparent 55%),
+    rgba(15,22,35,.55) !important;
+  border-radius: 22px !important;
+  padding: 24px !important;
+  min-height: 210px !important;
+}
+
+.skills-group h3{
+  color: var(--cyan) !important;
+  font-size: 1rem !important;
+  font-weight: 900 !important;
+  margin-bottom: 16px !important;
+}
+
+html[lang="ar"] .skills-group{
+  text-align: right !important;
+}
+
+html[lang="en"] .skills-group{
+  text-align: left !important;
+}
+
+#skills .certs-row{
+  margin-top: 26px !important;
+}
+
+/* hide old layouts if any remain */
+#skills .skills-grid,
+#skills .skills-matrix,
+#about .profile-card,
+#about .chips{
+  display: none !important;
+}
+
+@media (max-width: 820px){
+  #about .about-redesign,
+  .skills-showcase{
+    grid-template-columns: 1fr !important;
+  }
+
+  #about .about-main,
+  html[lang="ar"] #about .about-main,
+  html[lang="en"] #about .about-main{
+    text-align: center !important;
+  }
+
+  .about-focus-card{
+    max-width: 560px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+
+  .focus-title{
+    text-align: center !important;
+  }
+
+  .focus-pills,
+  .skill-pills,
+  html[lang="ar"] .focus-pills,
+  html[lang="ar"] .skill-pills,
+  html[lang="en"] .focus-pills,
+  html[lang="en"] .skill-pills{
+    justify-content: center !important;
+  }
+
+  .about-info-mini{
+    grid-template-columns: 1fr !important;
+  }
+
+  .skills-showcase{
+    max-width: 560px !important;
+    gap: 14px !important;
+  }
+
+  .skills-group{
+    min-height: auto !important;
+    padding: 20px !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 560px){
+  .about-focus-card{
+    border-radius: 22px !important;
+    padding: 20px !important;
+  }
+
+  .focus-pills span,
+  .skill-pills span{
+    font-size: .76rem !important;
+    padding: 7px 11px !important;
+  }
+
+  .skills-group{
+    border-radius: 18px !important;
+  }
+}
+
 </style>
 
 
@@ -1955,33 +2162,43 @@ html[lang="ar"] #skills .skills-column li::before{
     </section>
 
     <section id="about">
-      <div class="wrap about-grid">
-        <div class="profile-card reveal">
-          <div class="profile-mini">
-            <div>
-              <div class="mini-name">L.khalid</div>
-              <p class="mini-role" data-ar="مهتمة بجودة البرمجيات، الاختبار اليدوي والآلي، وتحسين تجربة المستخدم." data-en="Interested in software quality, manual and automation testing, and user experience improvement.">مهتمة بجودة البرمجيات، الاختبار اليدوي والآلي، وتحسين تجربة المستخدم.</p>
-            </div>
-            <div class="mini-sign">Quality starts before release.</div>
-          </div>
-
-          <div class="info-list">
-            <div class="info-row"><span data-ar="التعليم" data-en="Education">التعليم</span><strong data-ar="جامعة حائل" data-en="University of Hail">جامعة حائل</strong></div>
-            <div class="info-row"><span data-ar="التخصص" data-en="Major">التخصص</span><strong data-ar="هندسة برمجيات" data-en="Software Engineering">هندسة برمجيات</strong></div>
-            <div class="info-row"><span data-ar="التركيز" data-en="Focus">التركيز</span><strong data-ar="QA / Testing" data-en="QA / Testing">QA / Testing</strong></div>
-          </div>
-        </div>
-
-        <div class="about-copy reveal">
+      <div class="wrap about-redesign">
+        <div class="about-main reveal">
           <div class="eyebrow" data-ar="من أنا؟" data-en="About Me">من أنا؟</div>
-          <h2 class="section-title" data-ar="مهندسة برمجيات<br>بذائقة جودة." data-en="A Software Engineer<br>with a quality mindset.">مهندسة برمجيات<br>بذائقة جودة.</h2>
+          <h2 class="section-title"
+              data-ar="مهندسة برمجيات<br>بعقلية تركّز على الجودة."
+              data-en="A Software Engineer<br>with a quality mindset.">
+            مهندسة برمجيات<br>بعقلية تركّز على الجودة.
+          </h2>
 
           <p class="lead"
-             data-ar="مهندسة برمجيات حاصلة على شهادة ISTQB CTFL، مهتمة بجودة البرمجيات، الاختبار اليدوي والآلي، وتحسين تجربة المستخدم من خلال تحليل المتطلبات وتوثيق الملاحظات بوضوح."
-             data-en="Software Engineer and ISTQB CTFL certified, interested in software quality, manual and automation testing, and improving user experience through requirements analysis and clear defect documentation.">
-            مهندسة برمجيات حاصلة على شهادة ISTQB CTFL، مهتمة بجودة البرمجيات، الاختبار اليدوي والآلي، وتحسين تجربة المستخدم من خلال تحليل المتطلبات وتوثيق الملاحظات بوضوح.
+             data-ar="مهندسة برمجيات حاصلة على شهادة ISTQB CTFL، مهتمة بجودة البرمجيات، الاختبار اليدوي وAPI، وتحسين تجربة المستخدم من خلال تحليل المتطلبات وتوثيق الملاحظات بوضوح."
+             data-en="Software Engineer and ISTQB CTFL certified, interested in software quality, manual and API testing, and improving user experience through requirements analysis and clear defect documentation.">
+            مهندسة برمجيات حاصلة على شهادة ISTQB CTFL، مهتمة بجودة البرمجيات، الاختبار اليدوي وAPI، وتحسين تجربة المستخدم من خلال تحليل المتطلبات وتوثيق الملاحظات بوضوح.
           </p>
-</div>
+        </div>
+
+        <div class="about-focus-card reveal">
+          <div class="focus-title" data-ar="مجالات أركز عليها" data-en="Focus Areas">مجالات أركز عليها</div>
+
+          <div class="focus-pills">
+            <span data-ar="اختبار يدوي" data-en="Manual Testing">اختبار يدوي</span>
+            <span data-ar="اختبار API" data-en="API Testing">اختبار API</span>
+            <span data-ar="تتبع العيوب" data-en="Defect Tracking">تتبع العيوب</span>
+            <span data-ar="تحليل المتطلبات" data-en="Requirements Analysis">تحليل المتطلبات</span>
+          </div>
+
+          <div class="about-info-mini">
+            <div>
+              <small data-ar="التعليم" data-en="Education">التعليم</small>
+              <strong data-ar="جامعة حائل" data-en="University of Hail">جامعة حائل</strong>
+            </div>
+            <div>
+              <small data-ar="التركيز" data-en="Focus">التركيز</small>
+              <strong data-ar="ضمان الجودة واختبار البرمجيات" data-en="QA / Software Testing">ضمان الجودة واختبار البرمجيات</strong>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2038,39 +2255,41 @@ html[lang="ar"] #skills .skills-column li::before{
         </div>
 
         
-<div class="skills-matrix reveal">
-  <div class="skills-column">
-    <h3 data-ar="نقاط القوة الأساسية" data-en="Core Strengths">نقاط القوة الأساسية</h3>
-    <ul>
-      <li data-ar="اختبار البرمجيات" data-en="Software Testing">اختبار البرمجيات</li>
-      <li data-ar="سيناريوهات وحالات الاختبار" data-en="Test Scenarios & Cases">سيناريوهات وحالات الاختبار</li>
-      <li data-ar="توثيق العيوب" data-en="Defect Documentation">توثيق العيوب</li>
-      <li data-ar="التحقق من الجودة" data-en="QA Validation">التحقق من الجودة</li>
-    </ul>
-  </div>
+<div class="skills-showcase reveal">
+          <div class="skills-group">
+            <h3 data-ar="نقاط القوة" data-en="Core Strengths">نقاط القوة</h3>
+            <div class="skill-pills">
+              <span data-ar="اختبار البرمجيات" data-en="Software Testing">اختبار البرمجيات</span>
+              <span data-ar="حالات الاختبار" data-en="Test Cases">حالات الاختبار</span>
+              <span data-ar="التحقق من الجودة" data-en="QA Validation">التحقق من الجودة</span>
+              <span data-ar="توثيق العيوب" data-en="Defect Documentation">توثيق العيوب</span>
+            </div>
+          </div>
 
-  <div class="skills-column">
-    <h3 data-ar="الأدوات المستخدمة" data-en="Tools I Use">الأدوات المستخدمة</h3>
-    <ul>
-      <li>Postman</li>
-      <li data-ar="استعلامات SQL" data-en="SQL Queries">استعلامات SQL</li>
-      <li>Git / GitHub</li>
-      <li>Flask (Python)</li>
-    </ul>
-  </div>
+          <div class="skills-group">
+            <h3 data-ar="الأدوات" data-en="Tools I Use">الأدوات</h3>
+            <div class="skill-pills">
+              <span>Postman</span>
+              <span data-ar="استعلامات SQL" data-en="SQL Queries">استعلامات SQL</span>
+              <span>Git / GitHub</span>
+              <span>Flask</span>
+            </div>
+          </div>
 
-  <div class="skills-column">
-    <h3 data-ar="خبرة أنظمة الويب" data-en="Web Systems Exposure">خبرة أنظمة الويب</h3>
-    <ul>
-      <li>HTML / CSS</li>
-      <li>JavaScript</li>
-      <li>SQLite</li>
-      <li data-ar="اختبار أنظمة الويب" data-en="Web-Based Testing">اختبار أنظمة الويب</li>
-    </ul>
-  </div>
-</div>
+          <div class="skills-group">
+            <h3 data-ar="المعرفة التقنية" data-en="Technical Exposure">المعرفة التقنية</h3>
+            <div class="skill-pills">
+              <span>SDLC</span>
+              <span>STLC</span>
+              <span>Agile</span>
+              <span>HTML / CSS</span>
+              <span>JavaScript</span>
+              <span>SQLite</span>
+            </div>
+          </div>
+        </div>
 
-<div class="certs-row reveal">
+        <div class="certs-row reveal">
           <div class="cert-p">
             <div class="cert-ico">✓</div>
             <div>
