@@ -2345,6 +2345,105 @@ html[lang="en"] .signature-sub{
   }
 }
 
+
+/* ===== FINAL ABOUT BACKGROUND + SNAPSHOT CARD POLISH ONLY ===== */
+#about{
+  background:
+    radial-gradient(circle at 16% 18%, rgba(56,189,248,.09), transparent 32%),
+    radial-gradient(circle at 86% 72%, rgba(99,102,241,.10), transparent 36%),
+    linear-gradient(180deg, #05070d 0%, #071426 50%, #090d17 100%) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#about::before{
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    linear-gradient(90deg, rgba(56,189,248,.02) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(56,189,248,.015) 1px, transparent 1px) !important;
+  background-size: 54px 54px !important;
+  opacity: .18 !important;
+  pointer-events: none !important;
+}
+
+#about::after{
+  content: "" !important;
+  position: absolute !important;
+  width: 480px !important;
+  height: 480px !important;
+  right: -250px !important;
+  top: 22% !important;
+  border-radius: 999px !important;
+  background: radial-gradient(circle, rgba(59,130,246,.16), rgba(124,58,237,.055) 42%, transparent 70%) !important;
+  filter: blur(8px) !important;
+  opacity: .62 !important;
+  pointer-events: none !important;
+}
+
+#about .wrap,
+#about .about-redesign{
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+#about .about-focus-card{
+  background: linear-gradient(145deg, rgba(8,18,38,.72), rgba(14,18,36,.50)) !important;
+  border: 1px solid rgba(56,189,248,.18) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.025) inset,
+    0 28px 70px rgba(0,0,0,.22),
+    0 0 42px rgba(56,189,248,.055) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+#about .focus-pills span{
+  background: rgba(10,24,48,.72) !important;
+  border: 1px solid rgba(56,189,248,.28) !important;
+  color: rgba(248,250,252,.93) !important;
+  box-shadow: 0 0 16px rgba(56,189,248,.045) !important;
+}
+
+#about .about-info-mini div,
+#about .snapshot-card{
+  background: linear-gradient(135deg, rgba(10,20,42,.62), rgba(18,21,42,.46)) !important;
+  border: 1px solid rgba(56,189,248,.14) !important;
+  border-radius: 20px !important;
+  padding: 20px !important;
+  box-shadow: 0 12px 36px rgba(0,0,0,.12) !important;
+}
+
+#about .about-info-mini small,
+#about .snap-label{
+  color: rgba(56,189,248,.88) !important;
+  font-weight: 800 !important;
+}
+
+#about .about-info-mini strong,
+#about .snapshot-card strong{
+  color: #f8fafc !important;
+  font-weight: 900 !important;
+}
+
+@media (max-width: 760px){
+  #about::after{
+    width: 360px !important;
+    height: 360px !important;
+    right: -215px !important;
+    top: 27% !important;
+    opacity: .55 !important;
+  }
+  #about .about-focus-card{
+    border-radius: 24px !important;
+    padding: 22px !important;
+  }
+  #about .about-info-mini,
+  #about .snapshot-grid{
+    grid-template-columns: 1fr !important;
+  }
+}
+
 </style>
 
 
@@ -2389,7 +2488,7 @@ html[lang="en"] .signature-sub{
       <div class="wrap reveal">
         <div class="portfolio-word" data-ar="ملف أعمال" data-en="Portfolio">ملف أعمال</div>
         <h1 class="signature-name">Latifa Alanazi</h1>
-        
+        <p class="signature-sub" data-ar="مهندسة برمجيات بعقلية جودة" data-en="Quality-Focused Software Engineer">مهندسة برمجيات بعقلية جودة</p>
         <div class="signature-typing" aria-label="dynamic role"></div>
         <div class="scroll-cue" data-ar="مرر للأسفل" data-en="Scroll to explore">مرر للأسفل</div>
       </div>
