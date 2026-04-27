@@ -2250,17 +2250,25 @@ font-weight:800!important;
 }
 
 
-/* final hero fixes */
-html[lang="ar"] .signature-kicker{
-letter-spacing:normal!important;
-word-spacing:0!important;
-font-family:'IBM Plex Sans Arabic','Noto Kufi Arabic',sans-serif!important;
+/* ===== FINAL HERO FIXES: Arabic portfolio label + static subtitle ===== */
+html[lang="ar"] .portfolio-word{
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
+  text-transform: none !important;
+  font-family: 'IBM Plex Sans Arabic','Noto Kufi Arabic','Tajawal',sans-serif !important;
+  font-size: clamp(.9rem, 2vw, 1.05rem) !important;
+  line-height: 1.8 !important;
 }
-@media(max-width:760px){
-html[lang="ar"] .signature-kicker{
-font-size:1.08rem!important;
-letter-spacing:0!important;
+
+html[lang="ar"] .signature-sub{
+  direction: rtl !important;
+  font-family: 'IBM Plex Sans Arabic','Noto Kufi Arabic','Tajawal',sans-serif !important;
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
 }
+
+html[lang="en"] .signature-sub{
+  font-family: 'Outfit','Inter',system-ui,sans-serif !important;
 }
 
 </style>
@@ -2307,7 +2315,7 @@ letter-spacing:0!important;
       <div class="wrap reveal">
         <div class="portfolio-word" data-ar="ملف أعمال" data-en="Portfolio">ملف أعمال</div>
         <h1 class="signature-name">Latifa Alanazi</h1>
-        <p class="signature-sub" data-ar="مهندسة برمجيات · مختبرة برمجيات معتمدة" data-en="Software Engineering · Certified Software Tester">مهندسة برمجيات بعقلية جودة</p>
+        <p class="signature-sub" data-ar="مهندسة برمجيات بعقلية جودة" data-en="Quality-Focused Software Engineer">مهندسة برمجيات بعقلية جودة</p>
         <div class="signature-typing" aria-label="dynamic role"></div>
         <div class="scroll-cue" data-ar="مرر للأسفل" data-en="Scroll to explore">مرر للأسفل</div>
       </div>
