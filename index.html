@@ -1712,13 +1712,139 @@ html[lang="ar"] #skills .skills-column li::before{
 }
 
 
-/* FINAL: hide About Me repeated chips/boxes */
-#about .chips,
-#about .chip,
-#about .about-tags,
-#about .about-pill-list,
-#about .tag-row{
-  display: none !important;
+/* ===== FINAL MOBILE POLISH ONLY ===== */
+@media (max-width: 560px){
+
+  /* Fix Arabic "ملف أعمال" spacing/cropping */
+  html[lang="ar"] .portfolio-word{
+    letter-spacing: 0 !important;
+    font-family: 'IBM Plex Sans Arabic','Tajawal',sans-serif !important;
+    font-size: .9rem !important;
+    line-height: 1.8 !important;
+  }
+
+  html[lang="ar"] .signature-sub{
+    direction: rtl !important;
+    font-family: 'IBM Plex Sans Arabic','Tajawal',sans-serif !important;
+    font-size: .95rem !important;
+    line-height: 1.9 !important;
+    max-width: 330px !important;
+    margin-inline: auto !important;
+  }
+
+  .signature-name{
+    font-size: clamp(3.3rem, 19vw, 5.2rem) !important;
+    line-height: 1.02 !important;
+  }
+
+  .scroll-cue{
+    margin-top: 44px !important;
+    font-size: .72rem !important;
+    letter-spacing: .04em !important;
+  }
+
+  /* About: reduce huge card feeling and spacing */
+  #about{
+    padding-top: calc(var(--nav-h) + 34px) !important;
+  }
+
+  #about .about-grid{
+    gap: 34px !important;
+  }
+
+  #about .profile-card{
+    padding: 14px !important;
+    border-radius: 20px !important;
+  }
+
+  #about .profile-mini{
+    min-height: 245px !important;
+    padding: 18px !important;
+  }
+
+  #about .mini-role{
+    font-size: .9rem !important;
+    line-height: 1.7 !important;
+  }
+
+  #about .info-row{
+    font-size: .88rem !important;
+    align-items: center !important;
+  }
+
+  #about .section-title{
+    font-size: 1.85rem !important;
+    line-height: 1.35 !important;
+  }
+
+  #about .lead{
+    font-size: .98rem !important;
+    line-height: 1.85 !important;
+  }
+
+  /* Skills: make mobile compact and less stretched */
+  #skills{
+    padding-top: calc(var(--nav-h) + 34px) !important;
+  }
+
+  #skills .section-title{
+    font-size: 2rem !important;
+    margin-bottom: 26px !important;
+  }
+
+  #skills .skills-matrix{
+    margin-top: 28px !important;
+    gap: 0 !important;
+    max-width: 92vw !important;
+  }
+
+  #skills .skills-column,
+  html[lang="ar"] #skills .skills-column{
+    padding: 20px 0 !important;
+    min-height: auto !important;
+    border-top: 1px solid rgba(255,255,255,.10) !important;
+    text-align: center !important;
+  }
+
+  #skills .skills-column:first-child,
+  html[lang="ar"] #skills .skills-column:first-child{
+    border-top: 0 !important;
+  }
+
+  #skills .skills-column h3{
+    font-size: 1.25rem !important;
+    margin-bottom: 14px !important;
+  }
+
+  #skills .skills-column ul{
+    gap: 8px !important;
+  }
+
+  #skills .skills-column li{
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
+    padding: 0 !important;
+  }
+
+  #skills .skills-column li::before{
+    display: none !important;
+  }
+
+  #skills .certs-row{
+    margin-top: 20px !important;
+    gap: 10px !important;
+  }
+
+  #skills .cert-p{
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Contact: prevent crowding */
+  #contact .contact-tagline{
+    font-size: 1.35rem !important;
+    margin-top: 14px !important;
+  }
 }
 
 </style>
