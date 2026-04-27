@@ -2054,6 +2054,68 @@ html[lang="en"] .skills-group{
   }
 }
 
+
+/* ===== CERT DIRECTION + SUBTLE INTERACTION POLISH ===== */
+
+/* Certification check icon: right in Arabic, left in English */
+html[lang="ar"] #skills .cert-p{
+  flex-direction: row-reverse !important;
+  text-align: right !important;
+}
+
+html[lang="en"] #skills .cert-p{
+  flex-direction: row !important;
+  text-align: left !important;
+}
+
+/* Soft interactive motion for skill pills and certification cards */
+#skills .skill-pills span,
+#about .focus-pills span{
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#skills .skill-pills span::after,
+#about .focus-pills span::after{
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.12), transparent) !important;
+  transform: translateX(-120%) !important;
+  transition: transform .55s ease !important;
+}
+
+#skills .skill-pills span:hover::after,
+#about .focus-pills span:hover::after{
+  transform: translateX(120%) !important;
+}
+
+#skills .cert-p{
+  transition: transform .25s ease, border-color .25s ease, background .25s ease !important;
+}
+
+#skills .cert-p:hover{
+  transform: translateY(-4px) !important;
+  border-color: rgba(56,189,248,.38) !important;
+  background: linear-gradient(135deg, rgba(56,189,248,.12), rgba(167,139,250,.10)) !important;
+}
+
+#skills .cert-ico{
+  animation: certPulse 2.8s ease-in-out infinite !important;
+}
+
+@keyframes certPulse{
+  0%,100%{ box-shadow: 0 0 0 rgba(167,139,250,0); }
+  50%{ box-shadow: 0 0 18px rgba(167,139,250,.28); }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+  #skills .cert-ico{ animation: none !important; }
+  #skills .skill-pills span::after,
+  #about .focus-pills span::after{ display: none !important; }
+}
+
 </style>
 
 
