@@ -2175,7 +2175,7 @@ html[lang="en"] #skills .cert-p{
   }
 
   #experience .card::after{
-    content: "اضغطي للتفاصيل";
+    content: "اضغط للتفاصيل";
     display: block;
     margin-top: 14px;
     color: var(--cyan);
@@ -2216,6 +2216,37 @@ html[lang="en"] #skills .cert-p{
   html[lang="en"] #experience .card.open::after{
     content: "Close details";
   }
+}
+
+
+/* final snapshot redesign */
+.snapshot-grid{
+display:grid!important;
+grid-template-columns:1fr!important;
+gap:16px!important;
+margin-top:22px!important;
+}
+.snapshot-card{
+padding:22px!important;
+border-radius:24px!important;
+background:rgba(15,22,35,.72)!important;
+border:1px solid rgba(255,255,255,.08)!important;
+backdrop-filter:blur(14px)!important;
+}
+.snap-label{
+display:block!important;
+font-size:.9rem!important;
+color:var(--cyan)!important;
+margin-bottom:10px!important;
+font-weight:700!important;
+letter-spacing:.04em!important;
+}
+.snapshot-card strong{
+font-size:1.15rem!important;
+font-weight:800!important;
+}
+@media(min-width:900px){
+.snapshot-grid{grid-template-columns:repeat(3,1fr)!important;}
 }
 
 </style>
@@ -2344,7 +2375,7 @@ html[lang="en"] #skills .cert-p{
         </div>
 
         <div class="about-focus-card reveal">
-          <div class="focus-title" data-ar="مجالات أركز عليها" data-en="Focus Areas">مجالات أركز عليها</div>
+          <div class="focus-title" data-ar="مجالات أركز عليها" data-en="Profile Snapshot">مجالات أركز عليها</div>
 
           <div class="focus-pills">
             <span data-ar="اختبار يدوي" data-en="Manual Testing">اختبار يدوي</span>
