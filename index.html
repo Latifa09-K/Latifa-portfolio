@@ -2271,6 +2271,80 @@ html[lang="en"] .signature-sub{
   font-family: 'Outfit','Inter',system-ui,sans-serif !important;
 }
 
+
+/* ===== FINAL CONTACT ICON CARDS ===== */
+#contact .contact-icons-grid{
+  max-width: 760px !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 14px !important;
+}
+
+#contact .contact-icon-card{
+  min-height: 132px !important;
+  padding: 20px 14px !important;
+  border-radius: 22px !important;
+  background:
+    radial-gradient(120px 80px at 50% 0%, rgba(56,189,248,.10), transparent 70%),
+    rgba(15,22,35,.68) !important;
+}
+
+#contact .contact-svg{
+  width: 38px !important;
+  height: 38px !important;
+  display: grid !important;
+  place-items: center !important;
+  color: var(--cyan) !important;
+  margin-bottom: 8px !important;
+  filter: drop-shadow(0 0 10px rgba(56,189,248,.20)) !important;
+}
+
+#contact .contact-svg svg{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#contact .contact-icon-card strong{
+  font-size: .95rem !important;
+  margin-bottom: 2px !important;
+}
+
+#contact .contact-icon-card span:not(.contact-svg){
+  font-size: .72rem !important;
+  opacity: .85 !important;
+}
+
+#contact .contact-icon-card:active{
+  transform: scale(.98) !important;
+}
+
+@media(max-width: 560px){
+  #contact .contact-icons-grid{
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+    max-width: 100% !important;
+  }
+
+  #contact .contact-icon-card{
+    min-height: 108px !important;
+    padding: 15px 8px !important;
+    border-radius: 18px !important;
+  }
+
+  #contact .contact-svg{
+    width: 30px !important;
+    height: 30px !important;
+    margin-bottom: 6px !important;
+  }
+
+  #contact .contact-icon-card strong{
+    font-size: .78rem !important;
+  }
+
+  #contact .contact-icon-card span:not(.contact-svg){
+    display: none !important;
+  }
+}
+
 </style>
 
 
@@ -2575,18 +2649,34 @@ html[lang="en"] .signature-sub{
           </p>
         </div>
 
-        <div class="contact-grid">
-          <a class="contact-card reveal" href="mailto:tyf274721@gmail.com">
+        <div class="contact-grid contact-icons-grid">
+          <a class="contact-card contact-icon-card reveal" href="mailto:tyf274721@gmail.com" aria-label="Email">
+            <span class="contact-svg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                <path d="M3 7l9 6 9-6"></path>
+              </svg>
+            </span>
             <strong data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</strong>
             <span>tyf274721@gmail.com</span>
           </a>
 
-          <a class="contact-card reveal" href="https://www.linkedin.com/in/latifa-khalid-alanazi-3b32ba330" target="_blank">
+          <a class="contact-card contact-icon-card reveal" href="https://www.linkedin.com/in/latifa-khalid-alanazi-3b32ba330" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <span class="contact-svg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6.94 8.98H3.56V20h3.38V8.98zM5.25 4a1.96 1.96 0 100 3.92A1.96 1.96 0 005.25 4zm14.77 9.68c0-3.03-1.62-4.44-3.78-4.44-1.74 0-2.52.96-2.96 1.63V8.98h-3.24V20h3.38v-5.45c0-1.44.27-2.84 2.06-2.84 1.77 0 1.8 1.65 1.8 2.93V20h3.38v-6.32h-.64z"/>
+              </svg>
+            </span>
             <strong>LinkedIn</strong>
             <span>latifa-khalid-alanazi</span>
           </a>
 
-          <a class="contact-card reveal" href="https://github.com/Latifa09-K" target="_blank">
+          <a class="contact-card contact-icon-card reveal" href="https://github.com/Latifa09-K" target="_blank" rel="noopener" aria-label="GitHub">
+            <span class="contact-svg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .7a11.3 11.3 0 00-3.57 22.02c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.34-3.79-1.34-.51-1.29-1.25-1.63-1.25-1.63-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1.67 2.63.67 3.27-.04.48-.1.92.75 1.14.58 1.06.39 1.86.3 2.12-.78.09-1.6.04-2.42-.11 0 0 1.01.86.36 1.72 2.13 1.84 3.9 1.31 4.85 1 .21-.7.39-1.31.71-1.61-2.5-.29-5.13-1.25-5.13-5.57 0-1.23.44-2.23 1.15-3.02-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.15a10.8 10.8 0 015.64 0c2.15-1.46 3.1-1.15 3.1-1.15.61 1.55.23 2.7.11 2.98.72.79 1.15 1.79 1.15 3.02 0 4.33-2.64 5.28-5.15 5.56.4.35.76 1.04.76 2.1v3.11c0 .3.2.65.78.54A11.3 11.3 0 0012 .7z"/>
+              </svg>
+            </span>
             <strong>GitHub</strong>
             <span>github.com/Latifa09-K</span>
           </a>
