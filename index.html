@@ -1,1098 +1,305 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Latifa Alanazi | Portfolio</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
-
-  <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #05070d;
-      --bg2: #090d17;
-      --card: rgba(15, 22, 35, 0.78);
-      --card-solid: #0f1623;
-      --border: rgba(255,255,255,0.09);
-      --text: #eef2f8;
-      --muted: #8a93a8;
-      --muted2: #626b80;
-      --cyan: #38bdf8;
-      --purple: #a78bfa;
-      --blue: #4f6ef7;
-      --green: #7dd3a8;
-      --nav-h: 72px;
-      --radius: 22px;
-      --shadow: 0 24px 90px rgba(0,0,0,.35);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      min-height: 100vh;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      font-family: 'Noto Kufi Arabic', 'Tajawal', sans-serif;
-      line-height: 1.8;
-    }
-
-    html[lang="en"] body { font-family: 'Outfit', sans-serif; line-height: 1.6; }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(900px 500px at 15% 12%, rgba(56,189,248,.10), transparent 62%),
-        radial-gradient(760px 460px at 92% 84%, rgba(167,139,250,.13), transparent 62%),
-        radial-gradient(650px 380px at 55% 52%, rgba(79,110,247,.08), transparent 70%),
-        linear-gradient(180deg, #05070d 0%, #070b14 52%, #05070d 100%);
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      opacity: .025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    a { color: inherit; }
-    nav, main, footer { position: relative; z-index: 1; }
-
-    /* NAV */
-    nav {
-      height: var(--nav-h);
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 clamp(18px, 5vw, 76px);
-      background: rgba(5, 7, 13, .76);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .brand {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(1.45rem, 3vw, 2rem);
-      font-weight: 700;
-      text-decoration: none;
-      letter-spacing: .02em;
-      color: white;
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 26px;
-    }
-
-    html[lang="ar"] .nav-links { flex-direction: row-reverse; }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: .88rem;
-      font-weight: 600;
-      transition: .2s ease;
-      white-space: nowrap;
-    }
-
-    html[lang="ar"] .nav-links a { font-size: .92rem; }
-
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--text); }
-
-    .nav-actions { display: flex; align-items: center; gap: 12px; }
-
-    .lang-btn, .menu-btn {
-      border: 1px solid rgba(56,189,248,.25);
-      background: rgba(56,189,248,.09);
-      color: var(--cyan);
-      height: 38px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 800;
-      transition: .2s ease;
-    }
-
-    .lang-btn { padding: 0 17px; font-family: 'Outfit', sans-serif; letter-spacing: .06em; }
-    .lang-btn:hover, .menu-btn:hover { transform: translateY(-1px); background: rgba(56,189,248,.15); }
-
-    .menu-btn {
-      width: 42px;
-      display: none;
-      place-items: center;
-    }
-
-    .menu-lines { width: 18px; display: grid; gap: 5px; }
-    .menu-lines span { height: 2px; border-radius: 2px; background: var(--text); transition: .25s ease; }
-    .menu-btn.open .menu-lines span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .menu-btn.open .menu-lines span:nth-child(2) { opacity: 0; }
-    .menu-btn.open .menu-lines span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .mobile-panel {
-      display: none;
-      position: fixed;
-      z-index: 99;
-      top: var(--nav-h);
-      left: 14px;
-      right: 14px;
-      background: rgba(9, 13, 23, .96);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      backdrop-filter: blur(18px);
-    }
-
-    .mobile-panel.open { display: block; }
-
-    .mobile-panel a {
-      display: block;
-      text-decoration: none;
-      color: var(--text);
-      padding: 15px 18px;
-      border-bottom: 1px solid var(--border);
-      font-weight: 700;
-    }
-
-    .mobile-panel a:last-child { border-bottom: 0; }
-
-    /* SECTIONS */
-    section {
-      min-height: 100vh;
-      padding: calc(var(--nav-h) + 70px) clamp(18px, 6vw, 84px) 86px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .wrap { width: 100%; max-width: 1120px; margin: 0 auto; }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--cyan);
-      font-size: .75rem;
-      font-weight: 800;
-      letter-spacing: .07em;
-      margin-bottom: 22px;
-    }
-
-    html[lang="en"] .eyebrow { letter-spacing: .16em; text-transform: uppercase; }
-
-    .eyebrow::before,
-    .eyebrow::after {
-      content: "";
-      width: 24px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--cyan));
-    }
-
-    .eyebrow::after { background: linear-gradient(90deg, var(--cyan), transparent); }
-
-    .section-title {
-      font-family: 'Noto Kufi Arabic', 'Tajawal', sans-serif;
-      font-size: clamp(1.65rem, 4vw, 3rem);
-      line-height: 1.45;
-      font-weight: 800;
-      letter-spacing: -.03em;
-      margin-bottom: 18px;
-    }
-
-    html[lang="en"] .section-title {
-      font-family: 'Outfit', sans-serif;
-      line-height: 1.08;
-    }
-
-    .gradient {
-      background: linear-gradient(135deg, var(--cyan), var(--purple));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .lead { color: var(--muted); font-size: clamp(.98rem, 1.8vw, 1.1rem); max-width: 760px; }
-
-    .btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 36px; }
-
-    .btn {
-      min-height: 52px;
-      border-radius: 15px;
-      padding: 0 26px;
-      border: 1px solid var(--border);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: .92rem;
-      transition: .2s ease;
-      white-space: nowrap;
-    }
-
-    .btn.primary {
-      border-color: rgba(79,110,247,.55);
-      background: linear-gradient(135deg, var(--blue), #6d5dfc);
-      box-shadow: 0 16px 40px rgba(79,110,247,.27);
-      color: white;
-    }
-
-    .btn.ghost { background: rgba(255,255,255,.03); color: var(--text); }
-    .btn:hover { transform: translateY(-2px); }
-
-
-    /* SIGNATURE INTRO */
-    .signature-hero {
-      text-align: center;
-      min-height: 100svh;
-      padding-top: calc(var(--nav-h) + 55px);
-    }
-
-    .portfolio-word {
-      color: var(--cyan);
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(.72rem, 1.8vw, .86rem);
-      letter-spacing: .28em;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .signature-name {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(4rem, 14vw, 10.5rem);
-      line-height: .95;
-      font-weight: 700;
-      background: linear-gradient(120deg, #ffffff 10%, var(--cyan) 48%, var(--purple) 88%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 22px rgba(56,189,248,.13));
-      direction: ltr;
-    }
-
-
-    html[lang="ar"] .signature-name {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(4rem, 14vw, 10.5rem);
-      line-height: .95;
-      letter-spacing: .02em;
-      direction: ltr;
-    }
-
-    html[lang="ar"] .signature-sub {
-      font-family: 'Outfit', sans-serif;
-      direction: ltr;
-    }
-
-
-    .signature-sub {
-      margin-top: 22px;
-      color: rgba(238,242,248,.80);
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(.95rem, 2vw, 1.18rem);
-      font-weight: 700;
-      letter-spacing: .02em;
-    }
-
-    .scroll-cue {
-      margin-top: clamp(42px, 7vw, 72px);
-      display: grid;
-      justify-items: center;
-      gap: 12px;
-      color: var(--muted);
-      font-family: 'Outfit', sans-serif;
-      font-size: .72rem;
-      font-weight: 900;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    .scroll-cue::before {
-      content: "";
-      width: 1px;
-      height: 54px;
-      background: linear-gradient(to bottom, var(--cyan), transparent);
-      animation: cuePulse 1.8s infinite;
-    }
-
-    @keyframes cuePulse {
-      0%, 100% { opacity: .35; transform: scaleY(.86); }
-      50% { opacity: 1; transform: scaleY(1); }
-    }
-
-    /* HERO */
-    #home { text-align: center; min-height: 100svh; padding-top: calc(var(--nav-h) + 55px); }
-
-    .hero-card {
-      width: 100%;
-      max-width: 980px;
-      margin: 0 auto;
-      padding: clamp(22px, 5vw, 54px);
-      border-radius: clamp(26px, 5vw, 44px);
-      background:
-        linear-gradient(135deg, rgba(56,189,248,.08), transparent 34%),
-        linear-gradient(315deg, rgba(167,139,250,.10), transparent 32%),
-        rgba(255,255,255,.018);
-      border: 1px solid rgba(255,255,255,.07);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-title {
-      font-family: 'Noto Kufi Arabic', 'Tajawal', sans-serif;
-      font-size: clamp(2rem, 6.4vw, 4.2rem);
-      line-height: 1.55;
-      font-weight: 800;
-      letter-spacing: -.04em;
-      max-width: 900px;
-      margin: 0 auto 18px;
-    }
-
-    html[lang="en"] .hero-title {
-      font-family: 'Outfit', sans-serif;
-      line-height: 1.06;
-      max-width: 880px;
-    }
-
-    .hero-sub {
-      color: var(--muted);
-      font-size: clamp(.96rem, 1.9vw, 1.15rem);
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .hero-quote {
-      margin: 22px auto 0;
-      color: rgba(238,242,248,.72);
-      font-style: italic;
-      max-width: 680px;
-      font-size: clamp(.92rem, 1.8vw, 1.02rem);
-    }
-
-    .hero-meta {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-
-    .pill {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.035);
-      color: var(--muted);
-      padding: 7px 13px;
-      border-radius: 999px;
-      font-size: .78rem;
-      font-weight: 800;
-    }
-
-    /* ABOUT */
-    .about-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.25fr;
-      gap: clamp(24px, 5vw, 64px);
-      align-items: center;
-    }
-
-    html[lang="ar"] .about-grid { direction: ltr; }
-    html[lang="ar"] .about-copy { direction: rtl; text-align: right; }
-    html[lang="en"] .about-copy { text-align: left; }
-
-    .profile-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--card);
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .profile-mini {
-      min-height: 330px;
-      border-radius: 18px;
-      background:
-        radial-gradient(220px 140px at 28% 35%, rgba(167,139,250,.22), transparent 60%),
-        radial-gradient(240px 160px at 73% 72%, rgba(56,189,248,.16), transparent 68%),
-        #070a12;
-      border: 1px solid rgba(255,255,255,.08);
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .mini-name {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2rem;
-      color: white;
-      direction: ltr;
-      text-align: left;
-    }
-
-    .mini-role { color: var(--muted); font-size: .92rem; max-width: 270px; }
-    .mini-sign { color: white; opacity: .8; font-size: .8rem; }
-
-    .info-list { margin-top: 20px; display: grid; gap: 10px; }
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
-      color: var(--muted);
-      font-size: .9rem;
-    }
-
-    html[lang="ar"] .info-row { flex-direction: row-reverse; }
-    .info-row strong { color: var(--text); }
-
-    .chips { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 24px; }
-    html[lang="ar"] .chips { justify-content: flex-end; }
-
-    .chip {
-      padding: 7px 12px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.035);
-      color: var(--muted);
-      font-size: .78rem;
-      font-weight: 800;
-    }
-
-    /* EXPERIENCE */
-    .stack { display: grid; gap: 18px; margin-top: 36px; }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: clamp(20px, 4vw, 34px);
-      box-shadow: 0 16px 70px rgba(0,0,0,.20);
-      transition: .2s ease;
-    }
-
-    .card:hover { transform: translateY(-3px); border-color: rgba(56,189,248,.22); }
-
-    .topline {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 16px;
-    }
-
-    html[lang="ar"] .topline { flex-direction: row-reverse; text-align: right; }
-
-    .role h3 { font-size: 1.1rem; line-height: 1.4; margin-bottom: 3px; }
-    .role p { color: var(--cyan); font-size: .86rem; font-weight: 800; }
-
-    .badge {
-      flex-shrink: 0;
-      border: 1px solid rgba(56,189,248,.24);
-      background: rgba(56,189,248,.08);
-      color: var(--cyan);
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: .75rem;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .bullets { display: grid; gap: 10px; color: var(--muted); font-size: .94rem; }
-    .bullet { display: flex; gap: 10px; align-items: flex-start; }
-    html[lang="ar"] .bullet { flex-direction: row-reverse; text-align: right; }
-    .bullet::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--cyan);
-      flex: 0 0 auto;
-      margin-top: 12px;
-    }
-
-    .note {
-      margin-top: 16px;
-      padding: 13px 15px;
-      border-radius: 14px;
-      border: 1px solid rgba(167,139,250,.18);
-      background: rgba(167,139,250,.055);
-      color: var(--muted);
-      font-size: .88rem;
-    }
-
-    /* SKILLS */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 36px;
-    }
-
-    .skill-card h3 { margin-bottom: 4px; font-size: 1rem; }
-    .skill-card p { color: var(--muted2); font-size: .82rem; margin-bottom: 18px; }
-    .skill-list { display: grid; gap: 10px; color: var(--muted); font-weight: 700; font-size: .92rem; }
-    html[lang="ar"] .skill-card { text-align: right; }
-    html[lang="en"] .skill-card { text-align: left; }
-
-    /* PROJECTS */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin-top: 36px;
-    }
-
-    .project-card {
-      min-height: 260px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    html[lang="ar"] .project-card { text-align: right; }
-    html[lang="en"] .project-card { text-align: left; }
-
-    .project-card h3 { font-size: 1.15rem; margin-bottom: 10px; }
-    .project-card p { color: var(--muted); font-size: .93rem; margin-bottom: 18px; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    html[lang="ar"] .project-tags { justify-content: flex-end; }
-
-    .tag {
-      font-family: 'Outfit', sans-serif;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.035);
-      color: var(--muted);
-      border-radius: 8px;
-      padding: 4px 10px;
-      font-size: .72rem;
-      font-weight: 800;
-    }
-
-    .project-head {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-
-    html[lang="ar"] .project-head { flex-direction: row-reverse; }
-
-    .status {
-      border: 1px solid rgba(125,211,168,.28);
-      background: rgba(125,211,168,.08);
-      color: var(--green);
-      border-radius: 999px;
-      padding: 5px 10px;
-      font-size: .7rem;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .status.featured {
-      border-color: rgba(79,110,247,.35);
-      background: rgba(79,110,247,.10);
-      color: #9eb0ff;
-    }
-
-    /* CONTACT */
-    #contact { text-align: center; min-height: auto; }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin: 36px auto 0;
-      max-width: 920px;
-    }
-
-    .contact-card {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      border: 1px solid var(--border);
-      background: var(--card);
-      border-radius: 18px;
-      min-height: 118px;
-      padding: 18px;
-      transition: .2s ease;
-    }
-
-    .contact-card:hover { transform: translateY(-3px); border-color: rgba(56,189,248,.22); }
-    .contact-card strong { font-size: .95rem; }
-    .contact-card span { color: var(--cyan); font-family: 'Outfit', sans-serif; font-size: .78rem; word-break: break-word; }
-
-    footer {
-      text-align: center;
-      padding: 26px 18px;
-      color: var(--muted2);
-      border-top: 1px solid var(--border);
-      font-size: .82rem;
-    }
-
-    .reveal { opacity: 0; transform: translateY(22px); transition: .7s cubic-bezier(.22,1,.36,1); }
-    .reveal.show { opacity: 1; transform: translateY(0); }
-
-
-    /* CLEAN ARABIC TYPOGRAPHY OVERRIDES */
-    html[lang="ar"] body {
-      font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
-    }
-
-    html[lang="ar"] .section-title,
-    html[lang="ar"] .qa-title {
-      font-family: 'Tajawal', 'IBM Plex Sans Arabic', sans-serif;
-      font-weight: 800;
-      letter-spacing: 0;
-    }
-
-    .certs-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 24px;
-    }
-    .cert-p {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, rgba(79,110,247,.12), rgba(167,139,250,.08));
-      border: 1px solid rgba(79,110,247,.25);
-      border-radius: 13px;
-      padding: 12px 18px;
-    }
-    html[lang="ar"] .cert-p { flex-direction: row-reverse; text-align: right; }
-    .cert-ico {
-      width: 30px;
-      height: 30px;
-      border-radius: 9px;
-      background: rgba(79,110,247,.20);
-      color: var(--purple);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      flex-shrink: 0;
-    }
-    .cert-t { font-size: .84rem; font-weight: 800; }
-    .cert-s { font-size: .7rem; color: var(--muted); }
-
-
-    /* RESPONSIVE */
-    @media (max-width: 920px) {
-      .nav-links { display: none; }
-      .menu-btn { display: grid; }
-      .about-grid, .skills-grid, .projects-grid, .contact-grid { grid-template-columns: 1fr; }
-      section { min-height: auto; padding-top: calc(var(--nav-h) + 44px); padding-bottom: 62px; }
-      #home { min-height: 100svh; }
-      .profile-card { max-width: 560px; margin: 0 auto; width: 100%; }
-      .topline { align-items: flex-start; }
-    }
-
-    @media (max-width: 560px) {
-      :root { --nav-h: 64px; }
-      nav { padding: 0 15px; }
-      .brand { font-size: 1.35rem; }
-      .hero-card { padding: 24px 16px; border-radius: 24px; }
-      .hero-title { font-size: clamp(1.75rem, 9.6vw, 2.75rem); line-height: 1.58; }
-      html[lang="en"] .hero-title { line-height: 1.12; }
-      .hero-sub { font-size: .94rem; }
-      .btns { flex-direction: column; width: 100%; }
-      .btn { width: 100%; min-height: 50px; }
-      .section-title { font-size: 1.55rem; }
-      .lead { font-size: .95rem; }
-      .card { padding: 19px; border-radius: 18px; }
-      .topline { flex-direction: column !important; }
-      html[lang="ar"] .topline { align-items: flex-end; }
-      html[lang="en"] .topline { align-items: flex-start; }
-      .project-head { flex-direction: column !important; }
-      html[lang="ar"] .project-head { align-items: flex-end; }
-      html[lang="en"] .project-head { align-items: flex-start; }
-      .mini-name { font-size: 1.7rem; }
-      .profile-mini { min-height: 285px; padding: 20px; }
-      .contact-card { min-height: 105px; }
-    }
-  
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Latifa Alanazi | Portfolio</title>
+<meta name="description" content="Latifa Alanazi — Software Engineer & QA Engineer, ISTQB CTFL certified. Portfolio of projects, certifications, and practical work in software engineering and software testing.">
+<link rel="canonical" href="https://latifa09-k.github.io/Latifa-portfolio/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://latifa09-k.github.io/Latifa-portfolio/">
+<meta property="og:title" content="Latifa Alanazi | Software Engineer & QA Engineer">
+<meta property="og:description" content="Projects, certifications, and practical work in software engineering and software testing.">
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=Tajawal:wght@500;700;800&display=block" rel="stylesheet">
+
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #05070d; --bg2: #090d17; --card: rgba(15, 22, 35, 0.78); --card-solid: #0f1623;
+  --border: rgba(255,255,255,0.09); --text: #eef2f8; --muted: #8a93a8; --muted2: #626b80;
+  --cyan: #38bdf8; --purple: #a78bfa; --blue: #4f6ef7; --green: #7dd3a8;
+  --nav-h: 72px; --radius: 22px; --shadow: 0 24px 90px rgba(0,0,0,.35);
+}
+
+html { scroll-behavior: smooth; }
+
+body { min-height: 100vh; background: var(--bg); color: var(--text); overflow-x: hidden; font-family: 'Noto Kufi Arabic', 'Tajawal', sans-serif; line-height: 1.8; }
+html[lang="en"] body { font-family: 'Outfit', sans-serif; line-height: 1.6; }
+
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(900px 500px at 15% 12%, rgba(56,189,248,.10), transparent 62%),
+    radial-gradient(760px 460px at 92% 84%, rgba(167,139,250,.13), transparent 62%),
+    radial-gradient(650px 380px at 55% 52%, rgba(79,110,247,.08), transparent 70%),
+    linear-gradient(180deg, #05070d 0%, #070b14 52%, #05070d 100%);
+}
+
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; }
+nav, main, footer { position: relative; z-index: 1; }
+
+/* NAV */
+nav {
+  height: var(--nav-h); position: fixed; inset: 0 0 auto 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(18px, 5vw, 76px); background: rgba(5, 7, 13, .76);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border);
+}
+.brand { font-family: 'Dancing Script', cursive; font-size: clamp(1.45rem, 3vw, 2rem); font-weight: 700; text-decoration: none; letter-spacing: .02em; color: white; white-space: nowrap; }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 26px; }
+html[lang="ar"] .nav-links { flex-direction: row-reverse; }
+.nav-links a { text-decoration: none; color: var(--muted); font-size: .88rem; font-weight: 600; transition: .2s ease; white-space: nowrap; }
+html[lang="ar"] .nav-links a { font-size: .92rem; }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.lang-btn, .menu-btn { border: 1px solid rgba(56,189,248,.25); background: rgba(56,189,248,.09); color: var(--cyan); height: 38px; border-radius: 999px; cursor: pointer; font-weight: 800; transition: .2s ease; }
+.lang-btn { padding: 0 17px; font-family: 'Outfit', sans-serif; letter-spacing: .06em; }
+.lang-btn:hover, .menu-btn:hover { transform: translateY(-1px); background: rgba(56,189,248,.15); }
+.menu-btn { width: 42px; display: none; place-items: center; }
+.menu-lines { width: 18px; display: grid; gap: 5px; }
+.menu-lines span { height: 2px; border-radius: 2px; background: var(--text); transition: .25s ease; }
+.menu-btn.open .menu-lines span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn.open .menu-lines span:nth-child(2) { opacity: 0; }
+.menu-btn.open .menu-lines span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-panel { display: none; position: fixed; z-index: 99; top: var(--nav-h); left: 14px; right: 14px; background: rgba(9, 13, 23, .96); border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow); overflow: hidden; backdrop-filter: blur(18px); }
+.mobile-panel.open { display: block; }
+.mobile-panel a { display: block; text-decoration: none; color: var(--text); padding: 15px 18px; border-bottom: 1px solid var(--border); font-weight: 700; }
+.mobile-panel a:last-child { border-bottom: 0; }
+
+/* SECTIONS */
+section { min-height: 100vh; padding: calc(var(--nav-h) + 70px) clamp(18px, 6vw, 84px) 86px; display: flex; align-items: center; justify-content: center; }
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; }
+
+.eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--cyan); font-size: .75rem; font-weight: 800; letter-spacing: .07em; margin-bottom: 22px; }
+html[lang="en"] .eyebrow { letter-spacing: .16em; text-transform: uppercase; }
+.eyebrow::before, .eyebrow::after { content: ""; width: 24px; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan)); }
+.eyebrow::after { background: linear-gradient(90deg, var(--cyan), transparent); }
+
+.section-title { font-family: 'Noto Kufi Arabic', 'Tajawal', sans-serif; font-size: clamp(1.65rem, 4vw, 3rem); line-height: 1.45; font-weight: 800; letter-spacing: -.03em; margin-bottom: 18px; }
+html[lang="en"] .section-title { font-family: 'Outfit', sans-serif; line-height: 1.08; }
+
+.gradient { background: linear-gradient(135deg, var(--cyan), var(--purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.lead { color: var(--muted); font-size: clamp(.98rem, 1.8vw, 1.1rem); max-width: 760px; }
+
+.btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 36px; }
+.btn { min-height: 52px; border-radius: 15px; padding: 0 26px; border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center; gap: 9px; text-decoration: none; font-weight: 800; font-size: .92rem; transition: .2s ease; white-space: nowrap; }
+.btn.primary { border-color: rgba(79,110,247,.55); background: linear-gradient(135deg, var(--blue), #6d5dfc); box-shadow: 0 16px 40px rgba(79,110,247,.27); color: white; }
+.btn.ghost { background: rgba(255,255,255,.03); color: var(--text); }
+.btn:hover { transform: translateY(-2px); }
+
+/* SIGNATURE INTRO */
+.signature-hero { text-align: center; min-height: 100svh; padding-top: calc(var(--nav-h) + 55px); }
+.portfolio-word { color: var(--cyan); font-family: 'Outfit', sans-serif; font-size: clamp(.72rem, 1.8vw, .86rem); letter-spacing: .28em; font-weight: 800; text-transform: uppercase; margin-bottom: 18px; }
+.signature-name { font-family: 'Dancing Script', cursive; font-size: clamp(4rem, 14vw, 10.5rem); line-height: .95; font-weight: 700; background: linear-gradient(120deg, #ffffff 10%, var(--cyan) 48%, var(--purple) 88%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 22px rgba(56,189,248,.13)); direction: ltr; }
+html[lang="ar"] .signature-name { font-family: 'Dancing Script', cursive; font-size: clamp(4rem, 14vw, 10.5rem); line-height: .95; letter-spacing: .02em; direction: ltr; }
+html[lang="ar"] .signature-sub { font-family: 'Outfit', sans-serif; direction: ltr; }
+.signature-sub { margin-top: 22px; color: rgba(238,242,248,.80); font-family: 'Outfit', sans-serif; font-size: clamp(.95rem, 2vw, 1.18rem); font-weight: 700; letter-spacing: .02em; }
+.scroll-cue { margin-top: clamp(42px, 7vw, 72px); display: grid; justify-items: center; gap: 12px; color: var(--muted); font-family: 'Outfit', sans-serif; font-size: .72rem; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
+.scroll-cue::before { content: ""; width: 1px; height: 54px; background: linear-gradient(to bottom, var(--cyan), transparent); animation: cuePulse 1.8s infinite; }
+@keyframes cuePulse { 0%, 100% { opacity: .35; transform: scaleY(.86); } 50% { opacity: 1; transform: scaleY(1); } }
+
+/* HERO */
+#home { text-align: center; min-height: 100svh; padding-top: calc(var(--nav-h) + 55px); }
+.hero-card { width: 100%; max-width: 980px; margin: 0 auto; padding: clamp(22px, 5vw, 54px); border-radius: clamp(26px, 5vw, 44px); background: linear-gradient(135deg, rgba(56,189,248,.08), transparent 34%), linear-gradient(315deg, rgba(167,139,250,.10), transparent 32%), rgba(255,255,255,.018); border: 1px solid rgba(255,255,255,.07); box-shadow: var(--shadow); }
+.hero-title { font-family: 'Noto Kufi Arabic', 'Tajawal', sans-serif; font-size: clamp(2rem, 6.4vw, 4.2rem); line-height: 1.55; font-weight: 800; letter-spacing: -.04em; max-width: 900px; margin: 0 auto 18px; }
+html[lang="en"] .hero-title { font-family: 'Outfit', sans-serif; line-height: 1.06; max-width: 880px; }
+.hero-sub { color: var(--muted); font-size: clamp(.96rem, 1.9vw, 1.15rem); max-width: 760px; margin: 0 auto; }
+.hero-quote { margin: 22px auto 0; color: rgba(238,242,248,.72); font-style: italic; max-width: 680px; font-size: clamp(.92rem, 1.8vw, 1.02rem); }
+.hero-meta { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.pill { border: 1px solid var(--border); background: rgba(255,255,255,.035); color: var(--muted); padding: 7px 13px; border-radius: 999px; font-size: .78rem; font-weight: 800; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: .9fr 1.25fr; gap: clamp(24px, 5vw, 64px); align-items: center; }
+html[lang="ar"] .about-grid { direction: ltr; }
+html[lang="ar"] .about-copy { direction: rtl; text-align: right; }
+html[lang="en"] .about-copy { text-align: left; }
+.profile-card { border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); padding: 24px; box-shadow: var(--shadow); }
+.profile-mini { min-height: 330px; border-radius: 18px; background: radial-gradient(220px 140px at 28% 35%, rgba(167,139,250,.22), transparent 60%), radial-gradient(240px 160px at 73% 72%, rgba(56,189,248,.16), transparent 68%), #070a12; border: 1px solid rgba(255,255,255,.08); padding: 26px; display: flex; flex-direction: column; justify-content: space-between; }
+.mini-name { font-family: 'Dancing Script', cursive; font-size: 2rem; color: white; direction: ltr; text-align: left; }
+.mini-role { color: var(--muted); font-size: .92rem; max-width: 270px; }
+.mini-sign { color: white; opacity: .8; font-size: .8rem; }
+.info-list { margin-top: 20px; display: grid; gap: 10px; }
+.info-row { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--border); padding-bottom: 10px; color: var(--muted); font-size: .9rem; }
+html[lang="ar"] .info-row { flex-direction: row-reverse; }
+.info-row strong { color: var(--text); }
+.chips { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 24px; }
+html[lang="ar"] .chips { justify-content: flex-end; }
+.chip { padding: 7px 12px; border-radius: 10px; border: 1px solid var(--border); background: rgba(255,255,255,.035); color: var(--muted); font-size: .78rem; font-weight: 800; }
+
+/* EXPERIENCE */
+.stack { display: grid; gap: 18px; margin-top: 36px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: clamp(20px, 4vw, 34px); box-shadow: 0 16px 70px rgba(0,0,0,.20); transition: .2s ease; }
+.card:hover { transform: translateY(-3px); border-color: rgba(56,189,248,.22); }
+.topline { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 16px; }
+html[lang="ar"] .topline { flex-direction: row-reverse; text-align: right; }
+.role h3 { font-size: 1.1rem; line-height: 1.4; margin-bottom: 3px; }
+.role p { color: var(--cyan); font-size: .86rem; font-weight: 800; }
+.badge { flex-shrink: 0; border: 1px solid rgba(56,189,248,.24); background: rgba(56,189,248,.08); color: var(--cyan); border-radius: 999px; padding: 6px 12px; font-size: .75rem; font-weight: 900; white-space: nowrap; }
+.bullets { display: grid; gap: 10px; color: var(--muted); font-size: .94rem; }
+.bullet { display: flex; gap: 10px; align-items: flex-start; }
+html[lang="ar"] .bullet { flex-direction: row-reverse; text-align: right; }
+.bullet::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: var(--cyan); flex: 0 0 auto; margin-top: 12px; }
+.note { margin-top: 16px; padding: 13px 15px; border-radius: 14px; border: 1px solid rgba(167,139,250,.18); background: rgba(167,139,250,.055); color: var(--muted); font-size: .88rem; }
+
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+.skill-card h3 { margin-bottom: 4px; font-size: 1rem; }
+.skill-card p { color: var(--muted2); font-size: .82rem; margin-bottom: 18px; }
+.skill-list { display: grid; gap: 10px; color: var(--muted); font-weight: 700; font-size: .92rem; }
+html[lang="ar"] .skill-card { text-align: right; }
+html[lang="en"] .skill-card { text-align: left; }
+
+/* PROJECTS */
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 36px; }
+.project-card { min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; }
+html[lang="ar"] .project-card { text-align: right; }
+html[lang="en"] .project-card { text-align: left; }
+.project-card h3 { font-size: 1.15rem; margin-bottom: 10px; }
+.project-card p { color: var(--muted); font-size: .93rem; margin-bottom: 18px; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+html[lang="ar"] .project-tags { justify-content: flex-end; }
+.tag { font-family: 'Outfit', sans-serif; border: 1px solid var(--border); background: rgba(255,255,255,.035); color: var(--muted); border-radius: 8px; padding: 4px 10px; font-size: .72rem; font-weight: 800; }
+.project-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+html[lang="ar"] .project-head { flex-direction: row-reverse; }
+.status { border: 1px solid rgba(125,211,168,.28); background: rgba(125,211,168,.08); color: var(--green); border-radius: 999px; padding: 5px 10px; font-size: .7rem; font-weight: 900; white-space: nowrap; }
+.status.featured { border-color: rgba(79,110,247,.35); background: rgba(79,110,247,.10); color: #9eb0ff; }
+
+/* CONTACT */
+#contact { text-align: center; min-height: auto; }
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 36px auto 0; max-width: 920px; }
+.contact-card { display: flex; flex-direction: column; gap: 6px; align-items: center; justify-content: center; text-decoration: none; border: 1px solid var(--border); background: var(--card); border-radius: 18px; min-height: 118px; padding: 18px; transition: .2s ease; }
+.contact-card:hover { transform: translateY(-3px); border-color: rgba(56,189,248,.22); }
+.contact-card strong { font-size: .95rem; }
+.contact-card span { color: var(--cyan); font-family: 'Outfit', sans-serif; font-size: .78rem; word-break: break-word; }
+
+footer { text-align: center; padding: 26px 18px; color: var(--muted2); border-top: 1px solid var(--border); font-size: .82rem; }
+.reveal { opacity: 0; transform: translateY(22px); transition: .7s cubic-bezier(.22,1,.36,1); }
+.reveal.show { opacity: 1; transform: translateY(0); }
+
+/* CLEAN ARABIC TYPOGRAPHY OVERRIDES */
+html[lang="ar"] body { font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif; }
+html[lang="ar"] .section-title, html[lang="ar"] .qa-title { font-family: 'Tajawal', 'IBM Plex Sans Arabic', sans-serif; font-weight: 800; letter-spacing: 0; }
+
+.certs-row { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 24px; }
+.cert-p { display: flex; align-items: center; gap: 10px; background: linear-gradient(135deg, rgba(79,110,247,.12), rgba(167,139,250,.08)); border: 1px solid rgba(79,110,247,.25); border-radius: 13px; padding: 12px 18px; }
+html[lang="ar"] .cert-p { flex-direction: row-reverse; text-align: right; }
+.cert-ico { width: 30px; height: 30px; border-radius: 9px; background: rgba(79,110,247,.20); color: var(--purple); display: grid; place-items: center; font-weight: 900; flex-shrink: 0; }
+.cert-t { font-size: .84rem; font-weight: 800; }
+.cert-s { font-size: .7rem; color: var(--muted); }
+
+/* RESPONSIVE */
+@media (max-width: 920px) {
+  .nav-links { display: none; }
+  .menu-btn { display: grid; }
+  .about-grid, .skills-grid, .projects-grid, .contact-grid { grid-template-columns: 1fr; }
+  section { min-height: auto; padding-top: calc(var(--nav-h) + 44px); padding-bottom: 62px; }
+  #home { min-height: 100svh; }
+  .profile-card { max-width: 560px; margin: 0 auto; width: 100%; }
+  .topline { align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  :root { --nav-h: 64px; }
+  nav { padding: 0 15px; }
+  .brand { font-size: 1.35rem; }
+  .hero-card { padding: 24px 16px; border-radius: 24px; }
+  .hero-title { font-size: clamp(1.75rem, 9.6vw, 2.75rem); line-height: 1.58; }
+  html[lang="en"] .hero-title { line-height: 1.12; }
+  .hero-sub { font-size: .94rem; }
+  .btns { flex-direction: column; width: 100%; }
+  .btn { width: 100%; min-height: 50px; }
+  .section-title { font-size: 1.55rem; }
+  .lead { font-size: .95rem; }
+  .card { padding: 19px; border-radius: 18px; }
+  .topline { flex-direction: column !important; }
+  html[lang="ar"] .topline { align-items: flex-end; }
+  html[lang="en"] .topline { align-items: flex-start; }
+  .project-head { flex-direction: column !important; }
+  html[lang="ar"] .project-head { align-items: flex-end; }
+  html[lang="en"] .project-head { align-items: flex-start; }
+  .mini-name { font-size: 1.7rem; }
+  .profile-mini { min-height: 285px; padding: 20px; }
+  .contact-card { min-height: 105px; }
+}
 
 /* ===== Skills section fixed layout ===== */
-#skills .skills-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 18px !important;
-  margin-top: 40px !important;
-}
+#skills .skills-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 18px !important; margin-top: 40px !important; }
+#skills .skill-card { min-height: 230px !important; }
+#skills .skill-card h3 { font-size: 1rem !important; margin-bottom: 4px !important; }
+#skills .skill-card p { color: var(--muted2) !important; font-size: .82rem !important; margin-bottom: 18px !important; }
+#skills .skill-list { display: grid !important; gap: 10px !important; color: var(--muted) !important; font-weight: 700 !important; font-size: .92rem !important; }
+.certs-row { display: flex !important; gap: 14px !important; flex-wrap: wrap !important; justify-content: center !important; margin-top: 24px !important; }
+.cert-p { display: flex !important; align-items: center !important; gap: 10px !important; background: linear-gradient(135deg, rgba(79,110,247,.12), rgba(167,139,250,.08)) !important; border: 1px solid rgba(79,110,247,.25) !important; border-radius: 13px !important; padding: 12px 18px !important; }
+.cert-ico { width: 30px !important; height: 30px !important; border-radius: 9px !important; background: rgba(79,110,247,.20) !important; color: var(--purple) !important; display: grid !important; place-items: center !important; font-weight: 900 !important; flex-shrink: 0 !important; }
+.cert-t { font-size: .84rem !important; font-weight: 800 !important; }
+.cert-s { font-size: .7rem !important; color: var(--muted) !important; }
+html[lang="ar"] #skills .skill-card { text-align: right !important; }
+html[lang="ar"] .cert-p { flex-direction: row-reverse !important; text-align: right !important; }
+@media (max-width: 920px) { #skills .skills-grid { grid-template-columns: 1fr !important; } }
 
-#skills .skill-card {
-  min-height: 230px !important;
+/* English content typography only */
+html[lang="en"] body { font-family: 'Inter', system-ui, sans-serif !important; }
+html[lang="en"] h1:not(.signature-name):not(.brand), html[lang="en"] h2:not(.signature-name):not(.brand), html[lang="en"] h3:not(.signature-name):not(.brand),
+html[lang="en"] .section-title, html[lang="en"] .qa-final-title, html[lang="en"] .hero-title, html[lang="en"] .approach-title, html[lang="en"] .welcome-title {
+  font-family: 'Outfit', system-ui, sans-serif !important; font-weight: 700 !important; letter-spacing: -0.025em !important;
 }
+html[lang="en"] p, html[lang="en"] .lead, html[lang="en"] .qa-final-text, html[lang="en"] .skill-list, html[lang="en"] .project-card p, html[lang="en"] .contact-card span, html[lang="en"] .qa-stat span { font-family: 'Inter', system-ui, sans-serif !important; }
+.nav-logo, .brand, .signature-name, .mini-name { font-family: 'Dancing Script', cursive !important; }
 
-#skills .skill-card h3 {
-  font-size: 1rem !important;
-  margin-bottom: 4px !important;
-}
-
-#skills .skill-card p {
-  color: var(--muted2) !important;
-  font-size: .82rem !important;
-  margin-bottom: 18px !important;
-}
-
-#skills .skill-list {
-  display: grid !important;
-  gap: 10px !important;
-  color: var(--muted) !important;
-  font-weight: 700 !important;
-  font-size: .92rem !important;
-}
-
-.certs-row {
-  display: flex !important;
-  gap: 14px !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  margin-top: 24px !important;
-}
-
-.cert-p {
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  background: linear-gradient(135deg, rgba(79,110,247,.12), rgba(167,139,250,.08)) !important;
-  border: 1px solid rgba(79,110,247,.25) !important;
-  border-radius: 13px !important;
-  padding: 12px 18px !important;
-}
-
-.cert-ico {
-  width: 30px !important;
-  height: 30px !important;
-  border-radius: 9px !important;
-  background: rgba(79,110,247,.20) !important;
-  color: var(--purple) !important;
-  display: grid !important;
-  place-items: center !important;
-  font-weight: 900 !important;
-  flex-shrink: 0 !important;
-}
-
-.cert-t {
-  font-size: .84rem !important;
-  font-weight: 800 !important;
-}
-
-.cert-s {
-  font-size: .7rem !important;
-  color: var(--muted) !important;
-}
-
-html[lang="ar"] #skills .skill-card {
-  text-align: right !important;
-}
-
-html[lang="ar"] .cert-p {
-  flex-direction: row-reverse !important;
-  text-align: right !important;
-}
-
-@media (max-width: 920px) {
-  #skills .skills-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-
-/* English content typography only — logo/name is untouched */
-html[lang="en"] body {
-  font-family: 'Inter', system-ui, sans-serif !important;
-}
-
-html[lang="en"] h1:not(.signature-name):not(.brand),
-html[lang="en"] h2:not(.signature-name):not(.brand),
-html[lang="en"] h3:not(.signature-name):not(.brand),
-html[lang="en"] .section-title,
-html[lang="en"] .qa-final-title,
-html[lang="en"] .hero-title,
-html[lang="en"] .approach-title,
-html[lang="en"] .welcome-title {
-  font-family: 'Outfit', system-ui, sans-serif !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.025em !important;
-}
-
-html[lang="en"] p,
-html[lang="en"] .lead,
-html[lang="en"] .qa-final-text,
-html[lang="en"] .skill-list,
-html[lang="en"] .project-card p,
-html[lang="en"] .contact-card span,
-html[lang="en"] .qa-stat span {
-  font-family: 'Inter', system-ui, sans-serif !important;
-}
-
-.nav-logo,
-.brand,
-.signature-name,
-.mini-name {
-  font-family: 'Dancing Script', cursive !important;
-}
-
-/* ─── WELCOME V2 ─────────────────────────────── */
-.welcome-v2 {
-  min-height: 100vh;
-  padding: calc(var(--nav-h) + 60px) clamp(18px,6vw,80px) 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-.wv2-wrap {
-  width: 100%;
-  max-width: 1120px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(32px,5vw,72px);
-  align-items: center;
-}
-
-/* copy (right in RTL) */
-.wv2-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-}
+/* ─── WELCOME V2 ─── */
+.welcome-v2 { min-height: 100vh; padding: calc(var(--nav-h) + 60px) clamp(18px,6vw,80px) 80px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+.wv2-wrap { width: 100%; max-width: 1120px; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,72px); align-items: center; }
+.wv2-copy { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
 html[lang="en"] .wv2-copy { align-items: flex-start; text-align: left; }
-
-.wv2-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--purple);
-  font-size: .74rem;
-  font-weight: 500;
-  letter-spacing: .08em;
-  margin-bottom: 20px;
-}
+.wv2-eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--purple); font-size: .74rem; font-weight: 500; letter-spacing: .08em; margin-bottom: 20px; }
 .wv2-eyebrow::before,.wv2-eyebrow::after{content:"";width:18px;height:1px;background:var(--purple);opacity:.55;}
-
-.wv2-title {
-  font-family: 'Tajawal','IBM Plex Sans Arabic',sans-serif;
-  font-size: clamp(2rem,4.5vw,3.8rem);
-  font-weight: 800;
-  line-height: 1.42;
-  color: var(--text);
-  margin-bottom: 20px;
-}
-html[lang="en"] .wv2-title {
-  font-family: 'DM Sans','Outfit',sans-serif;
-  font-weight: 500;
-  line-height: 1.12;
-  letter-spacing: -.03em;
-}
-.wv2-grad {
-  background: linear-gradient(135deg, var(--cyan), var(--purple));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.wv2-text {
-  color: var(--muted);
-  font-size: clamp(.92rem,1.6vw,1.04rem);
-  line-height: 1.95;
-  max-width: 460px;
-  margin-bottom: 22px;
-}
-.wv2-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border: 1px solid rgba(167,139,250,.3);
-  background: rgba(167,139,250,.07);
-  border-radius: 14px;
-  color: rgba(238,242,248,.85);
-  font-size: .84rem;
-  margin-bottom: 28px;
-}
-.wv2-btns {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
+.wv2-title { font-family: 'Tajawal','IBM Plex Sans Arabic',sans-serif; font-size: clamp(2rem,4.5vw,3.8rem); font-weight: 800; line-height: 1.42; color: var(--text); margin-bottom: 20px; }
+html[lang="en"] .wv2-title { font-family: 'DM Sans','Outfit',sans-serif; font-weight: 500; line-height: 1.12; letter-spacing: -.03em; }
+.wv2-grad { background: linear-gradient(135deg, var(--cyan), var(--purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.wv2-text { color: var(--muted); font-size: clamp(.92rem,1.6vw,1.04rem); line-height: 1.95; max-width: 460px; margin-bottom: 22px; }
+.wv2-badge { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 1px solid rgba(167,139,250,.3); background: rgba(167,139,250,.07); border-radius: 14px; color: rgba(238,242,248,.85); font-size: .84rem; margin-bottom: 28px; }
+.wv2-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
 html[lang="en"] .wv2-btns { justify-content: flex-start; }
-
 .wv2-btn { min-width: 160px; }
-
-.wv2-cv-btn {
-  min-width: 160px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 0 22px;
-  min-height: 52px;
-  border-radius: 15px;
-  border: 1px solid rgba(255,255,255,.18);
-  background: transparent;
-  color: var(--text);
-  font-size: .92rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: .2s ease;
-  white-space: nowrap;
-  font-family: inherit;
-}
-.wv2-cv-btn:hover {
-  border-color: rgba(167,139,250,.5);
-  background: rgba(167,139,250,.08);
-  transform: translateY(-2px);
-}
-
-/* left col */
+.wv2-cv-btn { min-width: 160px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 22px; min-height: 52px; border-radius: 15px; border: 1px solid rgba(255,255,255,.18); background: transparent; color: var(--text); font-size: .92rem; font-weight: 600; text-decoration: none; transition: .2s ease; white-space: nowrap; font-family: inherit; }
+.wv2-cv-btn:hover { border-color: rgba(167,139,250,.5); background: rgba(167,139,250,.08); transform: translateY(-2px); }
 .wv2-left { display:flex; flex-direction:column; gap:20px; }
-
-/* stats */
-.wv2-stats {
-  display: grid;
-  grid-template-columns: repeat(5,1fr);
-  gap: 10px;
-}
-.wv2-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 7px;
-  padding: 16px 6px 14px;
-  border: 1px solid rgba(255,255,255,.09);
-  border-radius: 16px;
-  background: rgba(15,22,35,.55);
-  text-align: center;
-  transition: .2s ease;
-}
-.wv2-stat:hover {
-  border-color: rgba(167,139,250,.38);
-  transform: translateY(-4px);
-  background: rgba(167,139,250,.06);
-}
+.wv2-stats { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; }
+.wv2-stat { display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 16px 6px 14px; border: 1px solid rgba(255,255,255,.09); border-radius: 16px; background: rgba(15,22,35,.55); text-align: center; transition: .2s ease; }
+.wv2-stat:hover { border-color: rgba(167,139,250,.38); transform: translateY(-4px); background: rgba(167,139,250,.06); }
 .wv2-stat-icon { color: var(--purple); }
 .wv2-stat-icon svg { width: 22px; height: 22px; display: block; }
-.wv2-stat strong {
-  font-family: 'DM Sans','Outfit',sans-serif;
-  font-size: clamp(.8rem,1.1vw,1rem);
-  font-weight: 600;
-  color: var(--text);
-  white-space: nowrap;
-}
+.wv2-stat strong { font-family: 'DM Sans','Outfit',sans-serif; font-size: clamp(.8rem,1.1vw,1rem); font-weight: 600; color: var(--text); white-space: nowrap; }
 .wv2-stat span { font-size: .62rem; color: var(--muted); line-height:1.4; }
-
-/* divider */
-.wv2-divider {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--muted2);
-  font-size: .7rem;
-  letter-spacing: .1em;
-}
+.wv2-divider { display: flex; align-items: center; gap: 12px; color: var(--muted2); font-size: .7rem; letter-spacing: .1em; }
 .wv2-divider::before,.wv2-divider::after{content:"·";color:var(--purple);font-size:1.2rem;line-height:1;}
-
-/* tools */
-.wv2-tools {
-  display: grid;
-  grid-template-columns: repeat(7,1fr);
-  gap: 8px;
-}
-.wv2-tool {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  padding: 12px 4px;
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: 12px;
-  background: rgba(15,22,35,.4);
-  color: var(--muted);
-  font-size: .58rem;
-  transition: .2s ease;
-}
+.wv2-tools { display: grid; grid-template-columns: repeat(7,1fr); gap: 8px; }
+.wv2-tool { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 12px 4px; border: 1px solid rgba(255,255,255,.07); border-radius: 12px; background: rgba(15,22,35,.4); color: var(--muted); font-size: .58rem; transition: .2s ease; }
 .wv2-tool svg { width: 18px; height: 18px; display:block; }
-.wv2-tool:hover {
-  border-color: rgba(56,189,248,.32);
-  color: var(--cyan);
-  transform: translateY(-3px);
-  background: rgba(56,189,248,.05);
-}
+.wv2-tool:hover { border-color: rgba(56,189,248,.32); color: var(--cyan); transform: translateY(-3px); background: rgba(56,189,248,.05); }
 
-/* footer upgrade */
-footer {
-  text-align: center;
-  padding: 50px 18px 32px !important;
-  border-top: 1px solid var(--border);
-  position: relative; overflow: hidden;
-}
-footer::before {
-  content:""; position:absolute; inset:0;
-  background:radial-gradient(700px 120px at 50% 0%,rgba(56,189,248,.05),transparent 70%);
-  pointer-events:none;
-}
+footer { text-align: center; padding: 50px 18px 32px !important; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+footer::before { content:""; position:absolute; inset:0; background:radial-gradient(700px 120px at 50% 0%,rgba(56,189,248,.05),transparent 70%); pointer-events:none; }
 .footer-inner { position:relative; display:flex; flex-direction:column; align-items:center; gap:12px; }
-.footer-quote {
-  font-family: 'Dancing Script', cursive;
-  font-size: clamp(1.3rem,3vw,2rem);
-  background: linear-gradient(135deg, var(--cyan), var(--purple));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.5;
-}
+.footer-quote { font-family: 'Dancing Script', cursive; font-size: clamp(1.3rem,3vw,2rem); background: linear-gradient(135deg, var(--cyan), var(--purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.5; }
 .footer-copy { color:var(--muted2); font-size:.78rem; }
 
-/* scroll progress */
-#scroll-bar {
-  position:fixed; top:0; left:0; height:2.5px; width:0%;
-  background: linear-gradient(90deg,var(--cyan),var(--purple));
-  z-index:9999; border-radius:0 2px 2px 0; transition:width .07s linear;
-}
-/* cursor glow */
-#cursor-glow {
-  pointer-events:none; position:fixed;
-  width:360px; height:360px; border-radius:50%;
-  background:radial-gradient(circle,rgba(56,189,248,.05) 0%,transparent 70%);
-  transform:translate(-50%,-50%); z-index:0; will-change:left,top;
-}
+#scroll-bar { position:fixed; top:0; left:0; height:2.5px; width:0%; background: linear-gradient(90deg,var(--cyan),var(--purple)); z-index:9999; border-radius:0 2px 2px 0; transition:width .07s linear; }
+#cursor-glow { pointer-events:none; position:fixed; width:360px; height:360px; border-radius:50%; background:radial-gradient(circle,rgba(56,189,248,.05) 0%,transparent 70%); transform:translate(-50%,-50%); z-index:0; will-change:left,top; }
 @media(hover:none){#cursor-glow{display:none;}}
 
-/* responsive */
 @media(max-width:960px){
   .wv2-wrap{ grid-template-columns:1fr; }
   .wv2-copy{ order:1; align-items:center; text-align:center; }
@@ -1115,1372 +322,298 @@ footer::before {
 .wv2-method span{padding:10px 14px;border:1px solid rgba(56,189,248,.22);border-radius:999px;background:rgba(56,189,248,.05);font-size:.8rem;font-weight:700}
 @media(max-width:560px){.wv2-method{justify-content:center}}
 
-
-/* ===== Final welcome layout: cards under the main phrase ===== */
-.welcome-v2 .wv2-wrap{
-  grid-template-columns: 1fr !important;
-  max-width: 980px !important;
-}
-.welcome-v2 .wv2-copy{
-  width: 100% !important;
-  max-width: 760px !important;
-  margin-inline-start: auto !important;
-  margin-inline-end: 0 !important;
-}
-html[lang="en"] .welcome-v2 .wv2-copy{
-  margin-inline-start: 0 !important;
-  margin-inline-end: auto !important;
-}
-.welcome-stats{
-  width: 100% !important;
-  max-width: 720px !important;
-  margin: 22px 0 24px auto !important;
-  grid-template-columns: repeat(5, minmax(104px, 1fr)) !important;
-}
-html[lang="en"] .welcome-stats{
-  margin-inline-start: 0 !important;
-  margin-inline-end: auto !important;
-}
-.welcome-stats .wv2-stat{
-  min-height: 112px !important;
-  padding: 14px 8px 12px !important;
-}
-.welcome-stats .wv2-stat-icon svg{
-  width: 20px !important;
-  height: 20px !important;
-}
-.welcome-stats .wv2-stat strong{
-  font-size: .92rem !important;
-}
-.welcome-stats .wv2-stat span{
-  font-size: .6rem !important;
-}
+/* ===== Final welcome layout ===== */
+.welcome-v2 .wv2-wrap{ grid-template-columns: 1fr !important; max-width: 980px !important; }
+.welcome-v2 .wv2-copy{ width: 100% !important; max-width: 760px !important; margin-inline-start: auto !important; margin-inline-end: 0 !important; }
+html[lang="en"] .welcome-v2 .wv2-copy{ margin-inline-start: 0 !important; margin-inline-end: auto !important; }
+.welcome-stats{ width: 100% !important; max-width: 720px !important; margin: 22px 0 24px auto !important; grid-template-columns: repeat(5, minmax(104px, 1fr)) !important; }
+html[lang="en"] .welcome-stats{ margin-inline-start: 0 !important; margin-inline-end: auto !important; }
+.welcome-stats .wv2-stat{ min-height: 112px !important; padding: 14px 8px 12px !important; }
+.welcome-stats .wv2-stat-icon svg{ width: 20px !important; height: 20px !important; }
+.welcome-stats .wv2-stat strong{ font-size: .92rem !important; }
+.welcome-stats .wv2-stat span{ font-size: .6rem !important; }
 .wv2-cv-btn{ cursor:pointer; }
-.skill-tools-title{
-  justify-content: center !important;
-  margin: 28px auto 14px !important;
-}
-.skills-tools{
-  max-width: 760px !important;
-  margin: 0 auto 24px !important;
-  grid-template-columns: repeat(7, minmax(64px, 1fr)) !important;
-}
-.skills-tools .wv2-tool{
-  padding: 10px 4px !important;
-  border-radius: 11px !important;
-  font-size: .56rem !important;
-}
-.skills-tools .wv2-tool svg{
-  width: 17px !important;
-  height: 17px !important;
-}
+.skill-tools-title{ justify-content: center !important; margin: 28px auto 14px !important; }
+.skills-tools{ max-width: 760px !important; margin: 0 auto 24px !important; grid-template-columns: repeat(7, minmax(64px, 1fr)) !important; }
+.skills-tools .wv2-tool{ padding: 10px 4px !important; border-radius: 11px !important; font-size: .56rem !important; }
+.skills-tools .wv2-tool svg{ width: 17px !important; height: 17px !important; }
 @media(max-width:760px){
-  .welcome-stats{
-    grid-template-columns: repeat(5, minmax(118px, 1fr)) !important;
-    overflow-x: auto !important;
-    padding-bottom: 8px !important;
-  }
-  .skills-tools{
-    grid-template-columns: repeat(4, 1fr) !important;
-  }
+  .welcome-stats{ grid-template-columns: repeat(5, minmax(118px, 1fr)) !important; overflow-x: auto !important; padding-bottom: 8px !important; }
+  .skills-tools{ grid-template-columns: repeat(4, 1fr) !important; }
 }
 @media(max-width:560px){
-  .welcome-v2 .wv2-copy,
-  html[lang="en"] .welcome-v2 .wv2-copy{
-    max-width: 100% !important;
-    align-items: center !important;
-    text-align: center !important;
-    margin-inline: auto !important;
-  }
-  .welcome-stats{
-    margin-inline: auto !important;
-    grid-template-columns: repeat(5, minmax(112px, 1fr)) !important;
-  }
-  .skills-tools{
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
+  .welcome-v2 .wv2-copy, html[lang="en"] .welcome-v2 .wv2-copy{ max-width: 100% !important; align-items: center !important; text-align: center !important; margin-inline: auto !important; }
+  .welcome-stats{ margin-inline: auto !important; grid-template-columns: repeat(5, minmax(112px, 1fr)) !important; }
+  .skills-tools{ grid-template-columns: repeat(3, 1fr) !important; }
 }
 
-
-/* ===== FINAL REQUESTED FIXES: keep same design, fix only placement/text/colors ===== */
+/* ===== FINAL REQUESTED FIXES ===== */
 .footer-quote{display:none!important;}
-.welcome-v2 .wv2-copy{
-  align-items:flex-end!important;
-  text-align:right!important;
-  margin-inline-start:auto!important;
-  margin-inline-end:0!important;
-}
-.welcome-v2 .wv2-eyebrow{
-  color:var(--cyan)!important;
-  align-self:flex-end!important;
-}
-.welcome-v2 .wv2-eyebrow::before,
-.welcome-v2 .wv2-eyebrow::after{
-  background:var(--cyan)!important;
-}
-.skills-tools,
-.skill-tools-title{
-  display:none!important;
-}
-#skills .skill-list span{
-  display:flex!important;
-  align-items:center!important;
-  justify-content:flex-end!important;
-  gap:8px!important;
-}
-#skills .mini-icon{
-  display:inline-flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  min-width:34px!important;
-  height:22px!important;
-  padding:0 6px!important;
-  border-radius:8px!important;
-  border:1px solid rgba(56,189,248,.22)!important;
-  background:rgba(56,189,248,.055)!important;
-  color:var(--cyan)!important;
-  font-family:'Outfit',sans-serif!important;
-  font-style:normal!important;
-  font-size:.62rem!important;
-  font-weight:800!important;
-  direction:ltr!important;
-}
-#skills .certs-row{
-  justify-content:center!important;
-  margin-top:24px!important;
-}
-#skills .cert-p{
-  min-width:220px!important;
-}
+.welcome-v2 .wv2-copy{ align-items:flex-end!important; text-align:right!important; margin-inline-start:auto!important; margin-inline-end:0!important; }
+.welcome-v2 .wv2-eyebrow{ color:var(--cyan)!important; align-self:flex-end!important; }
+.welcome-v2 .wv2-eyebrow::before, .welcome-v2 .wv2-eyebrow::after{ background:var(--cyan)!important; }
+.skills-tools, .skill-tools-title{ display:none!important; }
+#skills .skill-list span{ display:flex!important; align-items:center!important; justify-content:flex-end!important; gap:8px!important; }
+#skills .mini-icon{ display:inline-flex!important; align-items:center!important; justify-content:center!important; min-width:34px!important; height:22px!important; padding:0 6px!important; border-radius:8px!important; border:1px solid rgba(56,189,248,.22)!important; background:rgba(56,189,248,.055)!important; color:var(--cyan)!important; font-family:'Outfit',sans-serif!important; font-style:normal!important; font-size:.62rem!important; font-weight:800!important; direction:ltr!important; }
+#skills .certs-row{ justify-content:center!important; margin-top:24px!important; }
+#skills .cert-p{ min-width:220px!important; }
 @media(max-width:560px){
-  .welcome-v2 .wv2-copy,
-  html[lang="en"] .welcome-v2 .wv2-copy{
-    align-items:center!important;
-    text-align:center!important;
-    margin-inline:auto!important;
-  }
+  .welcome-v2 .wv2-copy, html[lang="en"] .welcome-v2 .wv2-copy{ align-items:center!important; text-align:center!important; margin-inline:auto!important; }
   .welcome-v2 .wv2-eyebrow{align-self:center!important;}
   #skills .skill-list span{justify-content:center!important;}
 }
 
-
-/* ===== LATIFA FINAL FIX — requested only: right alignment + keep design ===== */
-#welcome.welcome-v2 .wv2-wrap{
-  max-width: 1120px !important;
-  margin: 0 auto !important;
-  display: block !important;
-}
-
-#welcome.welcome-v2 .wv2-copy{
-  width: min(760px, 100%) !important;
-  max-width: 760px !important;
-  margin-right: 0 !important;
-  margin-left: auto !important;
-  margin-inline-start: 0 !important;
-  margin-inline-end: auto !important;
-  align-items: flex-end !important;
-  text-align: right !important;
-  direction: rtl !important;
-}
-
-#welcome.welcome-v2 .wv2-eyebrow{
-  align-self: flex-end !important;
-  color: var(--cyan) !important;
-  margin-right: 0 !important;
-  margin-left: 0 !important;
-}
-
-#welcome.welcome-v2 .wv2-eyebrow::before,
-#welcome.welcome-v2 .wv2-eyebrow::after{
-  background: var(--cyan) !important;
-}
-
-#welcome.welcome-v2 .wv2-title,
-#welcome.welcome-v2 .wv2-text{
-  text-align: right !important;
-  margin-right: 0 !important;
-  margin-left: auto !important;
-}
-
-#welcome.welcome-v2 .welcome-stats{
-  width: 100% !important;
-  max-width: 720px !important;
-  margin: 22px 0 24px auto !important;
-  justify-content: end !important;
-}
-
-#welcome.welcome-v2 .wv2-btns{
-  justify-content: flex-end !important;
-}
-
-/* Keep the duplicated skill icons hidden; the tools are integrated inside Skills cards */
-.skill-tools-title,
-.skills-tools{
-  display: none !important;
-}
-
-/* Remove footer quote only */
-.footer-quote{
-  display: none !important;
-}
-
-/* Phone only: center for readability */
+/* ===== LATIFA FINAL FIX — right alignment ===== */
+#welcome.welcome-v2 .wv2-wrap{ max-width: 1120px !important; margin: 0 auto !important; display: block !important; }
+#welcome.welcome-v2 .wv2-copy{ width: min(760px, 100%) !important; max-width: 760px !important; margin-right: 0 !important; margin-left: auto !important; margin-inline-start: 0 !important; margin-inline-end: auto !important; align-items: flex-end !important; text-align: right !important; direction: rtl !important; }
+#welcome.welcome-v2 .wv2-eyebrow{ align-self: flex-end !important; color: var(--cyan) !important; margin-right: 0 !important; margin-left: 0 !important; }
+#welcome.welcome-v2 .wv2-eyebrow::before, #welcome.welcome-v2 .wv2-eyebrow::after{ background: var(--cyan) !important; }
+#welcome.welcome-v2 .wv2-title, #welcome.welcome-v2 .wv2-text{ text-align: right !important; margin-right: 0 !important; margin-left: auto !important; }
+#welcome.welcome-v2 .welcome-stats{ width: 100% !important; max-width: 720px !important; margin: 22px 0 24px auto !important; justify-content: end !important; }
+#welcome.welcome-v2 .wv2-btns{ justify-content: flex-end !important; }
+.skill-tools-title, .skills-tools{ display: none !important; }
+.footer-quote{ display: none !important; }
 @media (max-width: 560px){
-  #welcome.welcome-v2 .wv2-copy{
-    margin-right: auto !important;
-    margin-left: auto !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-
-  #welcome.welcome-v2 .wv2-eyebrow{
-    align-self: center !important;
-  }
-
-  #welcome.welcome-v2 .wv2-title,
-  #welcome.welcome-v2 .wv2-text{
-    text-align: center !important;
-    margin-inline: auto !important;
-  }
-
-  #welcome.welcome-v2 .wv2-btns{
-    justify-content: center !important;
-  }
+  #welcome.welcome-v2 .wv2-copy{ margin-right: auto !important; margin-left: auto !important; align-items: center !important; text-align: center !important; }
+  #welcome.welcome-v2 .wv2-eyebrow{ align-self: center !important; }
+  #welcome.welcome-v2 .wv2-title, #welcome.welcome-v2 .wv2-text{ text-align: center !important; margin-inline: auto !important; }
+  #welcome.welcome-v2 .wv2-btns{ justify-content: center !important; }
 }
 
-
-/* FINAL right shift for copy cards buttons */
 #welcome.welcome-v2 .wv2-copy{margin-left:auto!important;margin-right:0!important;text-align:right!important;align-items:flex-end!important;}
 #welcome.welcome-v2 .welcome-stats{display:flex!important;justify-content:flex-end!important;margin-left:auto!important;margin-right:0!important;}
 #welcome.welcome-v2 .wv2-btns{display:flex!important;justify-content:flex-end!important;margin-left:auto!important;margin-right:0!important;}
 
-
-/* ===== LATIFA V4 — ONLY MOVE WELCOME EYEBROW + STATS CARDS TO THE RIGHT ===== */
-
-/* parent stays same design, just forces the inner items to use the right edge */
-#welcome.welcome-v2 .wv2-copy{
-  display: flex !important;
-  flex-direction: column !important;
-  text-align: right !important;
-  direction: rtl !important;
-}
-
-/* "أهلًا، تعرف على منهجيتي..." to the RIGHT edge */
-#welcome.welcome-v2 .wv2-eyebrow{
-  width: fit-content !important;
-  max-width: 100% !important;
-  margin-right: 0 !important;
-  margin-left: auto !important;
-  margin-inline-start: 0 !important;
-  margin-inline-end: auto !important;
-  align-self: flex-start !important;
-  justify-content: flex-start !important;
-  color: var(--cyan) !important;
-}
-
-/* keep its two little lines teal */
-#welcome.welcome-v2 .wv2-eyebrow::before,
-#welcome.welcome-v2 .wv2-eyebrow::after{
-  background: var(--cyan) !important;
-}
-
-/* Move ONLY the five cards row to the RIGHT edge under the text */
-#welcome.welcome-v2 .welcome-stats{
-  width: fit-content !important;
-  max-width: 100% !important;
-  margin-right: 0 !important;
-  margin-left: auto !important;
-  margin-inline-start: 0 !important;
-  margin-inline-end: auto !important;
-  justify-content: flex-start !important;
-  justify-items: start !important;
-  align-self: flex-start !important;
-}
-
-/* Do not change buttons / title / colors / design */
-
-/* Mobile remains centered for readability */
+/* ===== V4 ===== */
+#welcome.welcome-v2 .wv2-copy{ display: flex !important; flex-direction: column !important; text-align: right !important; direction: rtl !important; }
+#welcome.welcome-v2 .wv2-eyebrow{ width: fit-content !important; max-width: 100% !important; margin-right: 0 !important; margin-left: auto !important; margin-inline-start: 0 !important; margin-inline-end: auto !important; align-self: flex-start !important; justify-content: flex-start !important; color: var(--cyan) !important; }
+#welcome.welcome-v2 .wv2-eyebrow::before, #welcome.welcome-v2 .wv2-eyebrow::after{ background: var(--cyan) !important; }
+#welcome.welcome-v2 .welcome-stats{ width: fit-content !important; max-width: 100% !important; margin-right: 0 !important; margin-left: auto !important; margin-inline-start: 0 !important; margin-inline-end: auto !important; justify-content: flex-start !important; justify-items: start !important; align-self: flex-start !important; }
 @media (max-width: 560px){
-  #welcome.welcome-v2 .wv2-eyebrow,
-  #welcome.welcome-v2 .welcome-stats{
-    margin-inline: auto !important;
-    align-self: center !important;
-  }
+  #welcome.welcome-v2 .wv2-eyebrow, #welcome.welcome-v2 .welcome-stats{ margin-inline: auto !important; align-self: center !important; }
 }
 
+/* ===== V7 ===== */
+html[lang="en"] body{ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; }
+html[lang="en"] .section-title, html[lang="en"] .wv2-title, html[lang="en"] .hero-title, html[lang="en"] h1:not(.signature-name), html[lang="en"] h2:not(.signature-name), html[lang="en"] h3:not(.signature-name){ font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; font-weight: 700 !important; letter-spacing: -0.035em !important; }
+#skills .mini-icon{ display: none !important; }
+html[lang="en"] #skills .skill-card{ text-align: left !important; }
+html[lang="en"] #skills .skill-list{ align-items: flex-start !important; text-align: left !important; }
+html[lang="en"] #skills .skill-list span{ justify-content: flex-start !important; text-align: left !important; gap: 0 !important; }
+html[lang="ar"] #skills .skill-list span{ justify-content: flex-end !important; text-align: right !important; gap: 0 !important; }
 
-/* ===== LATIFA V7 — English font polish + remove skill mini-tags effect ===== */
+/* ===== V8 / V9 ===== */
+html[lang="en"] #about, html[lang="en"] #about .about-copy, html[lang="en"] #about .about-text{ text-align:left !important; direction:ltr !important; align-items:flex-start !important; }
+#about .about-tags, #about .tag-row, #about .about-pill-list{ display:none !important; }
+html[lang="en"] section#about *{ text-align:left !important; }
+html[lang="en"] section#about .about-wrap, html[lang="en"] section#about .about-copy{ direction:ltr !important; align-items:flex-start !important; justify-content:flex-start !important; }
+html[lang="en"] section#about .chips, html[lang="en"] section#about .tags, html[lang="en"] section#about [class*="tag"], html[lang="en"] section#about [class*="pill"]{ display:none !important; }
 
-/* English typography: cleaner professional look */
-html[lang="en"] body{
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-}
+/* ===== V10 / V11 ===== */
+html[lang="en"] #welcome.welcome-v2 .wv2-copy{ margin-left: 0 !important; margin-right: auto !important; margin-inline-start: 0 !important; margin-inline-end: auto !important; align-items: flex-start !important; text-align: left !important; direction: ltr !important; }
+html[lang="en"] #welcome.welcome-v2 .wv2-eyebrow{ margin-left: 0 !important; margin-right: auto !important; margin-inline-start: 0 !important; margin-inline-end: auto !important; align-self: flex-start !important; justify-content: flex-start !important; text-align: left !important; direction: ltr !important; }
+html[lang="en"] #welcome.welcome-v2 .wv2-title, html[lang="en"] #welcome.welcome-v2 .wv2-text{ text-align: left !important; margin-left: 0 !important; margin-right: auto !important; direction: ltr !important; }
+html[lang="en"] #welcome.welcome-v2 .welcome-stats{ margin-left: 0 !important; margin-right: auto !important; margin-inline-start: 0 !important; margin-inline-end: auto !important; align-self: flex-start !important; justify-content: flex-start !important; justify-items: start !important; direction: ltr !important; }
+html[lang="en"] #welcome.welcome-v2 .wv2-btns{ justify-content: flex-start !important; direction: ltr !important; }
+html[lang="ar"] #welcome.welcome-v2 .wv2-copy{ margin-right: 0 !important; margin-left: auto !important; align-items: flex-end !important; text-align: right !important; direction: rtl !important; }
+html[lang="ar"] #welcome.welcome-v2 .wv2-eyebrow, html[lang="ar"] #welcome.welcome-v2 .welcome-stats{ margin-right: 0 !important; margin-left: auto !important; align-self: flex-end !important; }
+html[lang="ar"] #welcome.welcome-v2 .wv2-title, html[lang="ar"] #welcome.welcome-v2 .wv2-text{ text-align: right !important; }
+html[lang="en"] #welcome, html[lang="en"] #welcome *{ direction:ltr !important; }
+html[lang="en"] #welcome .wv2-copy, html[lang="en"] #welcome .hero-content{ margin-left:0!important;margin-right:auto!important;text-align:left!important;align-items:flex-start!important; }
+html[lang="en"] #welcome .welcome-stats,html[lang="en"] #welcome .wv2-btns{ justify-content:flex-start!important;margin-left:0!important;margin-right:auto!important; }
 
-html[lang="en"] .section-title,
-html[lang="en"] .wv2-title,
-html[lang="en"] .hero-title,
-html[lang="en"] h1:not(.signature-name),
-html[lang="en"] h2:not(.signature-name),
-html[lang="en"] h3:not(.signature-name){
-  font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.035em !important;
-}
-
-/* Skills: remove small tag boxes and make all three columns visually consistent */
-#skills .mini-icon{
-  display: none !important;
-}
-
-html[lang="en"] #skills .skill-card{
-  text-align: left !important;
-}
-
-html[lang="en"] #skills .skill-list{
-  align-items: flex-start !important;
-  text-align: left !important;
-}
-
-html[lang="en"] #skills .skill-list span{
-  justify-content: flex-start !important;
-  text-align: left !important;
-  gap: 0 !important;
-}
-
-html[lang="ar"] #skills .skill-list span{
-  justify-content: flex-end !important;
-  text-align: right !important;
-  gap: 0 !important;
-}
-
-
-/* ===== LATIFA V8 fixes ===== */
-
-/* English About section should be LEFT aligned */
-html[lang="en"] #about,
-html[lang="en"] #about .about-copy,
-html[lang="en"] #about .about-text{
- text-align:left !important;
- direction:ltr !important;
- align-items:flex-start !important;
-}
-
-/* hide repeated chips under About Me */
-#about .about-tags,
-#about .tag-row,
-#about .about-pill-list{
- display:none !important;
-}
-
-
-/* V9 stronger selectors */
-html[lang="en"] section#about *{
- text-align:left !important;
-}
-html[lang="en"] section#about .about-wrap,
-html[lang="en"] section#about .about-copy{
- direction:ltr !important;
- align-items:flex-start !important;
- justify-content:flex-start !important;
-}
-/* nuke repeated pills under about more aggressively */
-html[lang="en"] section#about .chips,
-html[lang="en"] section#about .tags,
-html[lang="en"] section#about [class*="tag"],
-html[lang="en"] section#about [class*="pill"]{
- display:none !important;
-}
-
-
-/* ===== LATIFA V10 fixes ===== */
-
-/* English welcome section must be LEFT aligned */
-html[lang="en"] #welcome.welcome-v2 .wv2-copy{
-  margin-left: 0 !important;
-  margin-right: auto !important;
-  margin-inline-start: 0 !important;
-  margin-inline-end: auto !important;
-  align-items: flex-start !important;
-  text-align: left !important;
-  direction: ltr !important;
-}
-
-html[lang="en"] #welcome.welcome-v2 .wv2-eyebrow{
-  margin-left: 0 !important;
-  margin-right: auto !important;
-  margin-inline-start: 0 !important;
-  margin-inline-end: auto !important;
-  align-self: flex-start !important;
-  justify-content: flex-start !important;
-  text-align: left !important;
-  direction: ltr !important;
-}
-
-html[lang="en"] #welcome.welcome-v2 .wv2-title,
-html[lang="en"] #welcome.welcome-v2 .wv2-text{
-  text-align: left !important;
-  margin-left: 0 !important;
-  margin-right: auto !important;
-  direction: ltr !important;
-}
-
-html[lang="en"] #welcome.welcome-v2 .welcome-stats{
-  margin-left: 0 !important;
-  margin-right: auto !important;
-  margin-inline-start: 0 !important;
-  margin-inline-end: auto !important;
-  align-self: flex-start !important;
-  justify-content: flex-start !important;
-  justify-items: start !important;
-  direction: ltr !important;
-}
-
-html[lang="en"] #welcome.welcome-v2 .wv2-btns{
-  justify-content: flex-start !important;
-  direction: ltr !important;
-}
-
-/* Keep Arabic welcome section right aligned */
-html[lang="ar"] #welcome.welcome-v2 .wv2-copy{
-  margin-right: 0 !important;
-  margin-left: auto !important;
-  align-items: flex-end !important;
-  text-align: right !important;
-  direction: rtl !important;
-}
-
-html[lang="ar"] #welcome.welcome-v2 .wv2-eyebrow,
-html[lang="ar"] #welcome.welcome-v2 .welcome-stats{
-  margin-right: 0 !important;
-  margin-left: auto !important;
-  align-self: flex-end !important;
-}
-
-html[lang="ar"] #welcome.welcome-v2 .wv2-title,
-html[lang="ar"] #welcome.welcome-v2 .wv2-text{
-  text-align: right !important;
-}
-
-
-/* V11 hard override */
-html[lang="en"] #welcome, html[lang="en"] #welcome *{
-direction:ltr !important;
-}
-html[lang="en"] #welcome .wv2-copy,
-html[lang="en"] #welcome .hero-content{
-margin-left:0!important;margin-right:auto!important;text-align:left!important;align-items:flex-start!important;
-}
-html[lang="en"] #welcome .welcome-stats,html[lang="en"] #welcome .wv2-btns{
-justify-content:flex-start!important;margin-left:0!important;margin-right:auto!important;
-}
-
-
-/* ===== LATIFA V15 — Skills section display update only ===== */
-#skills .skills-grid{
-  display: none !important;
-}
-
-#skills .skills-matrix{
-  width: 100% !important;
-  max-width: 980px !important;
-  margin: 42px auto 0 !important;
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: clamp(26px, 5vw, 60px) !important;
-  text-align: left !important;
-}
-
-#skills .skills-column{
-  min-height: 210px !important;
-  padding-inline-start: 28px !important;
-  border-inline-start: 1px solid rgba(255,255,255,.13) !important;
-}
-
-#skills .skills-column:first-child{
-  border-inline-start: 0 !important;
-}
-
-#skills .skills-column h3{
-  color: var(--cyan) !important;
-  font-size: 1.05rem !important;
-  font-weight: 800 !important;
-  margin-bottom: 18px !important;
-  letter-spacing: 0 !important;
-}
-
-#skills .skills-column ul{
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  display: grid !important;
-  gap: 13px !important;
-}
-
-#skills .skills-column li{
-  position: relative !important;
-  color: var(--text) !important;
-  font-size: .94rem !important;
-  font-weight: 700 !important;
-  line-height: 1.6 !important;
-  padding-inline-start: 18px !important;
-}
-
-#skills .skills-column li::before{
-  content: "" !important;
-  position: absolute !important;
-  inset-inline-start: 0 !important;
-  top: .75em !important;
-  width: 6px !important;
-  height: 6px !important;
-  border-radius: 999px !important;
-  background: var(--cyan) !important;
-  box-shadow: 0 0 12px rgba(56,189,248,.45) !important;
-}
-
-html[lang="ar"] #skills .skills-matrix{
-  direction: rtl !important;
-  text-align: right !important;
-}
-
-html[lang="ar"] #skills .skills-column{
-  border-inline-start: 0 !important;
-  border-inline-end: 1px solid rgba(255,255,255,.13) !important;
-  padding-inline-start: 0 !important;
-  padding-inline-end: 28px !important;
-}
-
-html[lang="ar"] #skills .skills-column:first-child{
-  border-inline-end: 0 !important;
-}
-
-html[lang="ar"] #skills .skills-column li{
-  padding-inline-start: 0 !important;
-  padding-inline-end: 18px !important;
-}
-
-html[lang="ar"] #skills .skills-column li::before{
-  inset-inline-start: auto !important;
-  inset-inline-end: 0 !important;
-}
-
-#skills .certs-row{
-  margin-top: 34px !important;
-}
-
+/* ===== V15 Skills ===== */
+#skills .skills-grid{ display: none !important; }
+#skills .skills-matrix{ width: 100% !important; max-width: 980px !important; margin: 42px auto 0 !important; display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: clamp(26px, 5vw, 60px) !important; text-align: left !important; }
+#skills .skills-column{ min-height: 210px !important; padding-inline-start: 28px !important; border-inline-start: 1px solid rgba(255,255,255,.13) !important; }
+#skills .skills-column:first-child{ border-inline-start: 0 !important; }
+#skills .skills-column h3{ color: var(--cyan) !important; font-size: 1.05rem !important; font-weight: 800 !important; margin-bottom: 18px !important; letter-spacing: 0 !important; }
+#skills .skills-column ul{ list-style: none !important; padding: 0 !important; margin: 0 !important; display: grid !important; gap: 13px !important; }
+#skills .skills-column li{ position: relative !important; color: var(--text) !important; font-size: .94rem !important; font-weight: 700 !important; line-height: 1.6 !important; padding-inline-start: 18px !important; }
+#skills .skills-column li::before{ content: "" !important; position: absolute !important; inset-inline-start: 0 !important; top: .75em !important; width: 6px !important; height: 6px !important; border-radius: 999px !important; background: var(--cyan) !important; box-shadow: 0 0 12px rgba(56,189,248,.45) !important; }
+html[lang="ar"] #skills .skills-matrix{ direction: rtl !important; text-align: right !important; }
+html[lang="ar"] #skills .skills-column{ border-inline-start: 0 !important; border-inline-end: 1px solid rgba(255,255,255,.13) !important; padding-inline-start: 0 !important; padding-inline-end: 28px !important; }
+html[lang="ar"] #skills .skills-column:first-child{ border-inline-end: 0 !important; }
+html[lang="ar"] #skills .skills-column li{ padding-inline-start: 0 !important; padding-inline-end: 18px !important; }
+html[lang="ar"] #skills .skills-column li::before{ inset-inline-start: auto !important; inset-inline-end: 0 !important; }
+#skills .certs-row{ margin-top: 34px !important; }
 @media (max-width: 820px){
-  #skills .skills-matrix{
-    grid-template-columns: 1fr !important;
-    gap: 22px !important;
-    max-width: 560px !important;
-  }
-
-  #skills .skills-column,
-  html[lang="ar"] #skills .skills-column{
-    border-inline-start: 0 !important;
-    border-inline-end: 0 !important;
-    border-top: 1px solid rgba(255,255,255,.11) !important;
-    padding: 22px 0 0 !important;
-    text-align: center !important;
-  }
-
-  #skills .skills-column:first-child,
-  html[lang="ar"] #skills .skills-column:first-child{
-    border-top: 0 !important;
-  }
-
-  #skills .skills-column li,
-  html[lang="ar"] #skills .skills-column li{
-    padding-inline: 0 !important;
-  }
-
-  #skills .skills-column li::before{
-    display: none !important;
-  }
+  #skills .skills-matrix{ grid-template-columns: 1fr !important; gap: 22px !important; max-width: 560px !important; }
+  #skills .skills-column, html[lang="ar"] #skills .skills-column{ border-inline-start: 0 !important; border-inline-end: 0 !important; border-top: 1px solid rgba(255,255,255,.11) !important; padding: 22px 0 0 !important; text-align: center !important; }
+  #skills .skills-column:first-child, html[lang="ar"] #skills .skills-column:first-child{ border-top: 0 !important; }
+  #skills .skills-column li, html[lang="ar"] #skills .skills-column li{ padding-inline: 0 !important; }
+  #skills .skills-column li::before{ display: none !important; }
 }
-
 
 /* V17 contact closing */
+#contact .contact-tagline{ font-size: clamp(1.25rem, 3vw, 1.85rem) !important; font-weight: 800 !important; color: var(--cyan) !important; margin: 18px auto 28px !important; text-align: center !important; line-height: 1.7 !important; }
 
-
-
-#contact .contact-tagline{
-  font-size: clamp(1.25rem, 3vw, 1.85rem) !important;
-  font-weight: 800 !important;
-  color: var(--cyan) !important;
-  margin: 18px auto 28px !important;
-  text-align: center !important;
-  line-height: 1.7 !important;
-}
-
-
-/* ===== FINAL MOBILE POLISH ONLY ===== */
+/* ===== FINAL MOBILE POLISH ===== */
 @media (max-width: 560px){
-
-  /* Fix Arabic "ملف أعمال" spacing/cropping */
-  html[lang="ar"] .portfolio-word{
-    letter-spacing: 0 !important;
-    font-family: 'IBM Plex Sans Arabic','Tajawal',sans-serif !important;
-    font-size: .9rem !important;
-    line-height: 1.8 !important;
-  }
-
-  html[lang="ar"] .signature-sub{
-    direction: rtl !important;
-    font-family: 'IBM Plex Sans Arabic','Tajawal',sans-serif !important;
-    font-size: .95rem !important;
-    line-height: 1.9 !important;
-    max-width: 330px !important;
-    margin-inline: auto !important;
-  }
-
-  .signature-name{
-    font-size: clamp(3.3rem, 19vw, 5.2rem) !important;
-    line-height: 1.02 !important;
-  }
-
-  .scroll-cue{
-    margin-top: 44px !important;
-    font-size: .72rem !important;
-    letter-spacing: .04em !important;
-  }
-
-  /* About: reduce huge card feeling and spacing */
-  #about{
-    padding-top: calc(var(--nav-h) + 34px) !important;
-  }
-
-  #about .about-grid{
-    gap: 34px !important;
-  }
-
-  #about .profile-card{
-    padding: 14px !important;
-    border-radius: 20px !important;
-  }
-
-  #about .profile-mini{
-    min-height: 245px !important;
-    padding: 18px !important;
-  }
-
-  #about .mini-role{
-    font-size: .9rem !important;
-    line-height: 1.7 !important;
-  }
-
-  #about .info-row{
-    font-size: .88rem !important;
-    align-items: center !important;
-  }
-
-  #about .section-title{
-    font-size: 1.85rem !important;
-    line-height: 1.35 !important;
-  }
-
-  #about .lead{
-    font-size: .98rem !important;
-    line-height: 1.85 !important;
-  }
-
-  /* Skills: make mobile compact and less stretched */
-  #skills{
-    padding-top: calc(var(--nav-h) + 34px) !important;
-  }
-
-  #skills .section-title{
-    font-size: 2rem !important;
-    margin-bottom: 26px !important;
-  }
-
-  #skills .skills-matrix{
-    margin-top: 28px !important;
-    gap: 0 !important;
-    max-width: 92vw !important;
-  }
-
-  #skills .skills-column,
-  html[lang="ar"] #skills .skills-column{
-    padding: 20px 0 !important;
-    min-height: auto !important;
-    border-top: 1px solid rgba(255,255,255,.10) !important;
-    text-align: center !important;
-  }
-
-  #skills .skills-column:first-child,
-  html[lang="ar"] #skills .skills-column:first-child{
-    border-top: 0 !important;
-  }
-
-  #skills .skills-column h3{
-    font-size: 1.25rem !important;
-    margin-bottom: 14px !important;
-  }
-
-  #skills .skills-column ul{
-    gap: 8px !important;
-  }
-
-  #skills .skills-column li{
-    font-size: 1rem !important;
-    line-height: 1.55 !important;
-    padding: 0 !important;
-  }
-
-  #skills .skills-column li::before{
-    display: none !important;
-  }
-
-  #skills .certs-row{
-    margin-top: 20px !important;
-    gap: 10px !important;
-  }
-
-  #skills .cert-p{
-    width: 100% !important;
-    justify-content: center !important;
-  }
-
-  /* Contact: prevent crowding */
-  #contact .contact-tagline{
-    font-size: 1.35rem !important;
-    margin-top: 14px !important;
-  }
+  html[lang="ar"] .portfolio-word{ letter-spacing: 0 !important; font-family: 'IBM Plex Sans Arabic','Tajawal',sans-serif !important; font-size: .9rem !important; line-height: 1.8 !important; }
+  html[lang="ar"] .signature-sub{ direction: rtl !important; font-family: 'IBM Plex Sans Arabic','Tajawal',sans-serif !important; font-size: .95rem !important; line-height: 1.9 !important; max-width: 330px !important; margin-inline: auto !important; }
+  .signature-name{ font-size: clamp(3.3rem, 19vw, 5.2rem) !important; line-height: 1.02 !important; }
+  .scroll-cue{ margin-top: 44px !important; font-size: .72rem !important; letter-spacing: .04em !important; }
+  #about{ padding-top: calc(var(--nav-h) + 34px) !important; }
+  #about .about-grid{ gap: 34px !important; }
+  #about .profile-card{ padding: 14px !important; border-radius: 20px !important; }
+  #about .profile-mini{ min-height: 245px !important; padding: 18px !important; }
+  #about .mini-role{ font-size: .9rem !important; line-height: 1.7 !important; }
+  #about .info-row{ font-size: .88rem !important; align-items: center !important; }
+  #about .section-title{ font-size: 1.85rem !important; line-height: 1.35 !important; }
+  #about .lead{ font-size: .98rem !important; line-height: 1.85 !important; }
+  #skills{ padding-top: calc(var(--nav-h) + 34px) !important; }
+  #skills .section-title{ font-size: 2rem !important; margin-bottom: 26px !important; }
+  #skills .skills-matrix{ margin-top: 28px !important; gap: 0 !important; max-width: 92vw !important; }
+  #skills .skills-column, html[lang="ar"] #skills .skills-column{ padding: 20px 0 !important; min-height: auto !important; border-top: 1px solid rgba(255,255,255,.10) !important; text-align: center !important; }
+  #skills .skills-column:first-child, html[lang="ar"] #skills .skills-column:first-child{ border-top: 0 !important; }
+  #skills .skills-column h3{ font-size: 1.25rem !important; margin-bottom: 14px !important; }
+  #skills .skills-column ul{ gap: 8px !important; }
+  #skills .skills-column li{ font-size: 1rem !important; line-height: 1.55 !important; padding: 0 !important; }
+  #skills .skills-column li::before{ display: none !important; }
+  #skills .certs-row{ margin-top: 20px !important; gap: 10px !important; }
+  #skills .cert-p{ width: 100% !important; justify-content: center !important; }
+  #contact .contact-tagline{ font-size: 1.35rem !important; margin-top: 14px !important; }
 }
-
 
 /* ===== FINAL ABOUT + SKILLS REDESIGN ===== */
-#about .about-redesign{
-  display: grid !important;
-  grid-template-columns: 1.05fr .95fr !important;
-  gap: clamp(26px, 5vw, 58px) !important;
-  align-items: center !important;
-}
-
-html[lang="ar"] #about .about-main{
-  text-align: right !important;
-}
-
-html[lang="en"] #about .about-main{
-  text-align: left !important;
-}
-
-.about-focus-card{
-  border: 1px solid rgba(255,255,255,.09) !important;
-  border-radius: 28px !important;
-  padding: clamp(22px, 4vw, 34px) !important;
-  background:
-    radial-gradient(240px 150px at 20% 20%, rgba(56,189,248,.12), transparent 65%),
-    radial-gradient(220px 150px at 82% 84%, rgba(167,139,250,.12), transparent 70%),
-    rgba(15,22,35,.64) !important;
-  box-shadow: 0 20px 80px rgba(0,0,0,.22) !important;
-}
-
-.focus-title{
-  color: var(--cyan) !important;
-  font-weight: 900 !important;
-  font-size: .9rem !important;
-  margin-bottom: 18px !important;
-}
-
-.focus-pills,
-.skill-pills{
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 10px !important;
-}
-
-html[lang="ar"] .focus-pills,
-html[lang="ar"] .skill-pills{
-  justify-content: flex-end !important;
-}
-
-html[lang="en"] .focus-pills,
-html[lang="en"] .skill-pills{
-  justify-content: flex-start !important;
-}
-
-.focus-pills span,
-.skill-pills span{
-  border: 1px solid rgba(56,189,248,.22) !important;
-  background: rgba(56,189,248,.055) !important;
-  color: rgba(238,242,248,.88) !important;
-  border-radius: 999px !important;
-  padding: 8px 13px !important;
-  font-size: .78rem !important;
-  font-weight: 800 !important;
-  transition: .2s ease !important;
-}
-
-.focus-pills span:hover,
-.skill-pills span:hover{
-  transform: translateY(-2px) !important;
-  border-color: rgba(56,189,248,.42) !important;
-  background: rgba(56,189,248,.09) !important;
-}
-
-.about-info-mini{
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 12px !important;
-  margin-top: 24px !important;
-}
-
-.about-info-mini div{
-  border: 1px solid rgba(255,255,255,.08) !important;
-  background: rgba(255,255,255,.028) !important;
-  border-radius: 16px !important;
-  padding: 14px !important;
-}
-
-.about-info-mini small{
-  display: block !important;
-  color: var(--muted2) !important;
-  font-size: .72rem !important;
-  margin-bottom: 5px !important;
-}
-
-.about-info-mini strong{
-  color: var(--text) !important;
-  font-size: .84rem !important;
-}
-
-.skills-showcase{
-  width: 100% !important;
-  max-width: 980px !important;
-  margin: 40px auto 0 !important;
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 16px !important;
-}
-
-.skills-group{
-  border: 1px solid rgba(255,255,255,.09) !important;
-  background:
-    linear-gradient(135deg, rgba(56,189,248,.045), transparent 55%),
-    rgba(15,22,35,.55) !important;
-  border-radius: 22px !important;
-  padding: 24px !important;
-  min-height: 210px !important;
-}
-
-.skills-group h3{
-  color: var(--cyan) !important;
-  font-size: 1rem !important;
-  font-weight: 900 !important;
-  margin-bottom: 16px !important;
-}
-
-html[lang="ar"] .skills-group{
-  text-align: right !important;
-}
-
-html[lang="en"] .skills-group{
-  text-align: left !important;
-}
-
-#skills .certs-row{
-  margin-top: 26px !important;
-}
-
-/* hide old layouts if any remain */
-#skills .skills-grid,
-#skills .skills-matrix,
-#about .profile-card,
-#about .chips{
-  display: none !important;
-}
-
+#about .about-redesign{ display: grid !important; grid-template-columns: 1.05fr .95fr !important; gap: clamp(26px, 5vw, 58px) !important; align-items: center !important; }
+html[lang="ar"] #about .about-main{ text-align: right !important; }
+html[lang="en"] #about .about-main{ text-align: left !important; }
+.about-focus-card{ border: 1px solid rgba(255,255,255,.09) !important; border-radius: 28px !important; padding: clamp(22px, 4vw, 34px) !important; background: radial-gradient(240px 150px at 20% 20%, rgba(56,189,248,.12), transparent 65%), radial-gradient(220px 150px at 82% 84%, rgba(167,139,250,.12), transparent 70%), rgba(15,22,35,.64) !important; box-shadow: 0 20px 80px rgba(0,0,0,.22) !important; }
+.focus-title{ color: var(--cyan) !important; font-weight: 900 !important; font-size: .9rem !important; margin-bottom: 18px !important; }
+.focus-pills, .skill-pills{ display: flex !important; flex-wrap: wrap !important; gap: 10px !important; }
+html[lang="ar"] .focus-pills, html[lang="ar"] .skill-pills{ justify-content: flex-end !important; }
+html[lang="en"] .focus-pills, html[lang="en"] .skill-pills{ justify-content: flex-start !important; }
+.focus-pills span, .skill-pills span{ border: 1px solid rgba(56,189,248,.22) !important; background: rgba(56,189,248,.055) !important; color: rgba(238,242,248,.88) !important; border-radius: 999px !important; padding: 8px 13px !important; font-size: .78rem !important; font-weight: 800 !important; transition: .2s ease !important; }
+.focus-pills span:hover, .skill-pills span:hover{ transform: translateY(-2px) !important; border-color: rgba(56,189,248,.42) !important; background: rgba(56,189,248,.09) !important; }
+.about-info-mini{ display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; margin-top: 24px !important; }
+.about-info-mini div{ border: 1px solid rgba(255,255,255,.08) !important; background: rgba(255,255,255,.028) !important; border-radius: 16px !important; padding: 14px !important; }
+.about-info-mini small{ display: block !important; color: var(--muted2) !important; font-size: .72rem !important; margin-bottom: 5px !important; }
+.about-info-mini strong{ color: var(--text) !important; font-size: .84rem !important; }
+.skills-showcase{ width: 100% !important; max-width: 980px !important; margin: 40px auto 0 !important; display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 16px !important; }
+.skills-group{ border: 1px solid rgba(255,255,255,.09) !important; background: linear-gradient(135deg, rgba(56,189,248,.045), transparent 55%), rgba(15,22,35,.55) !important; border-radius: 22px !important; padding: 24px !important; min-height: 210px !important; }
+.skills-group h3{ color: var(--cyan) !important; font-size: 1rem !important; font-weight: 900 !important; margin-bottom: 16px !important; }
+html[lang="ar"] .skills-group{ text-align: right !important; }
+html[lang="en"] .skills-group{ text-align: left !important; }
+#skills .certs-row{ margin-top: 26px !important; }
+#skills .skills-grid, #skills .skills-matrix, #about .profile-card, #about .chips{ display: none !important; }
 @media (max-width: 820px){
-  #about .about-redesign,
-  .skills-showcase{
-    grid-template-columns: 1fr !important;
-  }
-
-  #about .about-main,
-  html[lang="ar"] #about .about-main,
-  html[lang="en"] #about .about-main{
-    text-align: center !important;
-  }
-
-  .about-focus-card{
-    max-width: 560px !important;
-    margin: 0 auto !important;
-    width: 100% !important;
-  }
-
-  .focus-title{
-    text-align: center !important;
-  }
-
-  .focus-pills,
-  .skill-pills,
-  html[lang="ar"] .focus-pills,
-  html[lang="ar"] .skill-pills,
-  html[lang="en"] .focus-pills,
-  html[lang="en"] .skill-pills{
-    justify-content: center !important;
-  }
-
-  .about-info-mini{
-    grid-template-columns: 1fr !important;
-  }
-
-  .skills-showcase{
-    max-width: 560px !important;
-    gap: 14px !important;
-  }
-
-  .skills-group{
-    min-height: auto !important;
-    padding: 20px !important;
-    text-align: center !important;
-  }
+  #about .about-redesign, .skills-showcase{ grid-template-columns: 1fr !important; }
+  #about .about-main, html[lang="ar"] #about .about-main, html[lang="en"] #about .about-main{ text-align: center !important; }
+  .about-focus-card{ max-width: 560px !important; margin: 0 auto !important; width: 100% !important; }
+  .focus-title{ text-align: center !important; }
+  .focus-pills, .skill-pills, html[lang="ar"] .focus-pills, html[lang="ar"] .skill-pills, html[lang="en"] .focus-pills, html[lang="en"] .skill-pills{ justify-content: center !important; }
+  .about-info-mini{ grid-template-columns: 1fr !important; }
+  .skills-showcase{ max-width: 560px !important; gap: 14px !important; }
+  .skills-group{ min-height: auto !important; padding: 20px !important; text-align: center !important; }
 }
-
 @media (max-width: 560px){
-  .about-focus-card{
-    border-radius: 22px !important;
-    padding: 20px !important;
-  }
-
-  .focus-pills span,
-  .skill-pills span{
-    font-size: .76rem !important;
-    padding: 7px 11px !important;
-  }
-
-  .skills-group{
-    border-radius: 18px !important;
-  }
+  .about-focus-card{ border-radius: 22px !important; padding: 20px !important; }
+  .focus-pills span, .skill-pills span{ font-size: .76rem !important; padding: 7px 11px !important; }
+  .skills-group{ border-radius: 18px !important; }
 }
 
-
-/* ===== CERT DIRECTION + SUBTLE INTERACTION POLISH ===== */
-
-/* Certification check icon: right in Arabic, left in English */
-html[lang="ar"] #skills .cert-p{
-  flex-direction: row-reverse !important;
-  text-align: right !important;
-}
-
-html[lang="en"] #skills .cert-p{
-  flex-direction: row !important;
-  text-align: left !important;
-}
-
-/* Soft interactive motion for skill pills and certification cards */
-#skills .skill-pills span,
-#about .focus-pills span{
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-#skills .skill-pills span::after,
-#about .focus-pills span::after{
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,.12), transparent) !important;
-  transform: translateX(-120%) !important;
-  transition: transform .55s ease !important;
-}
-
-#skills .skill-pills span:hover::after,
-#about .focus-pills span:hover::after{
-  transform: translateX(120%) !important;
-}
-
-#skills .cert-p{
-  transition: transform .25s ease, border-color .25s ease, background .25s ease !important;
-}
-
-#skills .cert-p:hover{
-  transform: translateY(-4px) !important;
-  border-color: rgba(56,189,248,.38) !important;
-  background: linear-gradient(135deg, rgba(56,189,248,.12), rgba(167,139,250,.10)) !important;
-}
-
-#skills .cert-ico{
-  animation: certPulse 2.8s ease-in-out infinite !important;
-}
-
-@keyframes certPulse{
-  0%,100%{ box-shadow: 0 0 0 rgba(167,139,250,0); }
-  50%{ box-shadow: 0 0 18px rgba(167,139,250,.28); }
-}
-
-/* Respect users who prefer reduced motion */
+/* ===== CERT DIRECTION + INTERACTION POLISH ===== */
+html[lang="ar"] #skills .cert-p{ flex-direction: row-reverse !important; text-align: right !important; }
+html[lang="en"] #skills .cert-p{ flex-direction: row !important; text-align: left !important; }
+#skills .skill-pills span, #about .focus-pills span{ position: relative !important; overflow: hidden !important; }
+#skills .skill-pills span::after, #about .focus-pills span::after{ content: "" !important; position: absolute !important; inset: 0 !important; background: linear-gradient(120deg, transparent, rgba(255,255,255,.12), transparent) !important; transform: translateX(-120%) !important; transition: transform .55s ease !important; }
+#skills .skill-pills span:hover::after, #about .focus-pills span:hover::after{ transform: translateX(120%) !important; }
+#skills .cert-p{ transition: transform .25s ease, border-color .25s ease, background .25s ease !important; }
+#skills .cert-p:hover{ transform: translateY(-4px) !important; border-color: rgba(56,189,248,.38) !important; background: linear-gradient(135deg, rgba(56,189,248,.12), rgba(167,139,250,.10)) !important; }
+#skills .cert-ico{ animation: certPulse 2.8s ease-in-out infinite !important; }
+@keyframes certPulse{ 0%,100%{ box-shadow: 0 0 0 rgba(167,139,250,0); } 50%{ box-shadow: 0 0 18px rgba(167,139,250,.28); } }
 @media (prefers-reduced-motion: reduce){
   #skills .cert-ico{ animation: none !important; }
-  #skills .skill-pills span::after,
-  #about .focus-pills span::after{ display: none !important; }
+  #skills .skill-pills span::after, #about .focus-pills span::after{ display: none !important; }
 }
 
-
-/* ===== FINAL INTERACTIVE VERSION: mobile-friendly interactions ===== */
-
-/* Remove certificate check icons */
-#skills .cert-ico{
-  display: none !important;
-}
-
-#skills .cert-p{
-  justify-content: center !important;
-  padding: 16px 24px !important;
-}
-
-/* Typing line under the intro role */
-.signature-typing{
-  margin-top: 10px;
-  color: var(--cyan);
-  font-family: 'Outfit', 'IBM Plex Sans Arabic', sans-serif;
-  font-weight: 800;
-  font-size: clamp(.86rem, 2vw, 1.05rem);
-  min-height: 1.6em;
-  letter-spacing: .03em;
-  opacity: .95;
-}
-
-.signature-typing::after{
-  content: "|";
-  margin-inline-start: 5px;
-  color: var(--purple);
-  animation: blinkCaret .9s infinite;
-}
-
-@keyframes blinkCaret{
-  0%, 45%{ opacity: 1; }
-  46%, 100%{ opacity: 0; }
-}
-
-/* Touch glow for pills/cards on mobile */
-.skill-pills span,
-.focus-pills span,
-.contact-card,
-.cert-p{
-  -webkit-tap-highlight-color: transparent;
-}
-
-.is-tapped{
-  transform: scale(.98) !important;
-  border-color: rgba(56,189,248,.55) !important;
-  box-shadow: 0 0 22px rgba(56,189,248,.16) !important;
-}
-
-/* Mobile experience accordion */
+/* ===== FINAL INTERACTIVE VERSION ===== */
+#skills .cert-ico{ display: none !important; }
+#skills .cert-p{ justify-content: center !important; padding: 16px 24px !important; }
+.signature-typing{ margin-top: 10px; color: var(--cyan); font-family: 'Outfit', 'IBM Plex Sans Arabic', sans-serif; font-weight: 800; font-size: clamp(.86rem, 2vw, 1.05rem); min-height: 1.6em; letter-spacing: .03em; opacity: .95; }
+.signature-typing::after{ content: "|"; margin-inline-start: 5px; color: var(--purple); animation: blinkCaret .9s infinite; }
+@keyframes blinkCaret{ 0%, 45%{ opacity: 1; } 46%, 100%{ opacity: 0; } }
+.skill-pills span, .focus-pills span, .contact-card, .cert-p{ -webkit-tap-highlight-color: transparent; }
+.is-tapped{ transform: scale(.98) !important; border-color: rgba(56,189,248,.55) !important; box-shadow: 0 0 22px rgba(56,189,248,.16) !important; }
 @media (max-width: 760px){
-  #experience .card{
-    cursor: pointer;
-    position: relative;
-  }
-
-  #experience .card::after{
-    content: "اضغط للتفاصيل";
-    display: block;
-    margin-top: 14px;
-    color: var(--cyan);
-    font-size: .74rem;
-    font-weight: 900;
-    opacity: .85;
-  }
-
-  html[lang="en"] #experience .card::after{
-    content: "Tap for details";
-  }
-
-  #experience .card .bullets,
-  #experience .card .note{
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height .45s ease, opacity .35s ease, margin .35s ease;
-    margin-top: 0 !important;
-  }
-
-  #experience .card.open .bullets{
-    max-height: 520px;
-    opacity: 1;
-    margin-top: 14px !important;
-  }
-
-  #experience .card.open .note{
-    max-height: 160px;
-    opacity: 1;
-    margin-top: 14px !important;
-  }
-
-  #experience .card.open::after{
-    content: "إغلاق التفاصيل";
-  }
-
-  html[lang="en"] #experience .card.open::after{
-    content: "Close details";
-  }
+  #experience .card{ cursor: pointer; position: relative; }
+  #experience .card::after{ content: "اضغط للتفاصيل"; display: block; margin-top: 14px; color: var(--cyan); font-size: .74rem; font-weight: 900; opacity: .85; }
+  html[lang="en"] #experience .card::after{ content: "Tap for details"; }
+  #experience .card .bullets, #experience .card .note{ max-height: 0; overflow: hidden; opacity: 0; transition: max-height .45s ease, opacity .35s ease, margin .35s ease; margin-top: 0 !important; }
+  #experience .card.open .bullets{ max-height: 520px; opacity: 1; margin-top: 14px !important; }
+  #experience .card.open .note{ max-height: 160px; opacity: 1; margin-top: 14px !important; }
+  #experience .card.open::after{ content: "إغلاق التفاصيل"; }
+  html[lang="en"] #experience .card.open::after{ content: "Close details"; }
 }
 
+/* snapshot redesign */
+.snapshot-grid{ display:grid!important; grid-template-columns:1fr!important; gap:16px!important; margin-top:22px!important; }
+.snapshot-card{ padding:22px!important; border-radius:24px!important; background:rgba(15,22,35,.72)!important; border:1px solid rgba(255,255,255,.08)!important; backdrop-filter:blur(14px)!important; }
+.snap-label{ display:block!important; font-size:.9rem!important; color:var(--cyan)!important; margin-bottom:10px!important; font-weight:700!important; letter-spacing:.04em!important; }
+.snapshot-card strong{ font-size:1.15rem!important; font-weight:800!important; }
+@media(min-width:900px){ .snapshot-grid{grid-template-columns:repeat(3,1fr)!important;} }
 
-/* final snapshot redesign */
-.snapshot-grid{
-display:grid!important;
-grid-template-columns:1fr!important;
-gap:16px!important;
-margin-top:22px!important;
-}
-.snapshot-card{
-padding:22px!important;
-border-radius:24px!important;
-background:rgba(15,22,35,.72)!important;
-border:1px solid rgba(255,255,255,.08)!important;
-backdrop-filter:blur(14px)!important;
-}
-.snap-label{
-display:block!important;
-font-size:.9rem!important;
-color:var(--cyan)!important;
-margin-bottom:10px!important;
-font-weight:700!important;
-letter-spacing:.04em!important;
-}
-.snapshot-card strong{
-font-size:1.15rem!important;
-font-weight:800!important;
-}
-@media(min-width:900px){
-.snapshot-grid{grid-template-columns:repeat(3,1fr)!important;}
-}
-
-
-/* ===== FINAL HERO FIXES: Arabic portfolio label + static subtitle ===== */
-html[lang="ar"] .portfolio-word{
-  letter-spacing: 0 !important;
-  word-spacing: 0 !important;
-  text-transform: none !important;
-  font-family: 'IBM Plex Sans Arabic','Noto Kufi Arabic','Tajawal',sans-serif !important;
-  font-size: clamp(.9rem, 2vw, 1.05rem) !important;
-  line-height: 1.8 !important;
-}
-
-html[lang="ar"] .signature-sub{
-  direction: rtl !important;
-  font-family: 'IBM Plex Sans Arabic','Noto Kufi Arabic','Tajawal',sans-serif !important;
-  letter-spacing: 0 !important;
-  word-spacing: 0 !important;
-}
-
-html[lang="en"] .signature-sub{
-  font-family: 'Outfit','Inter',system-ui,sans-serif !important;
-}
-
+/* ===== FINAL HERO FIXES ===== */
+html[lang="ar"] .portfolio-word{ letter-spacing: 0 !important; word-spacing: 0 !important; text-transform: none !important; font-family: 'IBM Plex Sans Arabic','Noto Kufi Arabic','Tajawal',sans-serif !important; font-size: clamp(.9rem, 2vw, 1.05rem) !important; line-height: 1.8 !important; }
+html[lang="ar"] .signature-sub{ direction: rtl !important; font-family: 'IBM Plex Sans Arabic','Noto Kufi Arabic','Tajawal',sans-serif !important; letter-spacing: 0 !important; word-spacing: 0 !important; }
+html[lang="en"] .signature-sub{ font-family: 'Outfit','Inter',system-ui,sans-serif !important; }
 
 /* ===== FINAL CONTACT ICON CARDS ===== */
-#contact .contact-icons-grid{
-  max-width: 760px !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 14px !important;
-}
-
-#contact .contact-icon-card{
-  min-height: 132px !important;
-  padding: 20px 14px !important;
-  border-radius: 22px !important;
-  background:
-    radial-gradient(120px 80px at 50% 0%, rgba(56,189,248,.10), transparent 70%),
-    rgba(15,22,35,.68) !important;
-}
-
-#contact .contact-svg{
-  width: 38px !important;
-  height: 38px !important;
-  display: grid !important;
-  place-items: center !important;
-  color: var(--cyan) !important;
-  margin-bottom: 8px !important;
-  filter: drop-shadow(0 0 10px rgba(56,189,248,.20)) !important;
-}
-
-#contact .contact-svg svg{
-  width: 100% !important;
-  height: 100% !important;
-}
-
-#contact .contact-icon-card strong{
-  font-size: .95rem !important;
-  margin-bottom: 2px !important;
-}
-
-#contact .contact-icon-card span:not(.contact-svg){
-  font-size: .72rem !important;
-  opacity: .85 !important;
-}
-
-#contact .contact-icon-card:active{
-  transform: scale(.98) !important;
-}
-
+#contact .contact-icons-grid{ max-width: 760px !important; grid-template-columns: repeat(3, 1fr) !important; gap: 14px !important; }
+#contact .contact-icon-card{ min-height: 132px !important; padding: 20px 14px !important; border-radius: 22px !important; background: radial-gradient(120px 80px at 50% 0%, rgba(56,189,248,.10), transparent 70%), rgba(15,22,35,.68) !important; }
+#contact .contact-svg{ width: 38px !important; height: 38px !important; display: grid !important; place-items: center !important; color: var(--cyan) !important; margin-bottom: 8px !important; filter: drop-shadow(0 0 10px rgba(56,189,248,.20)) !important; }
+#contact .contact-svg svg{ width: 100% !important; height: 100% !important; }
+#contact .contact-icon-card strong{ font-size: .95rem !important; margin-bottom: 2px !important; }
+#contact .contact-icon-card span:not(.contact-svg){ font-size: .72rem !important; opacity: .85 !important; }
+#contact .contact-icon-card:active{ transform: scale(.98) !important; }
 @media(max-width: 560px){
-  #contact .contact-icons-grid{
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 10px !important;
-    max-width: 100% !important;
-  }
-
-  #contact .contact-icon-card{
-    min-height: 108px !important;
-    padding: 15px 8px !important;
-    border-radius: 18px !important;
-  }
-
-  #contact .contact-svg{
-    width: 30px !important;
-    height: 30px !important;
-    margin-bottom: 6px !important;
-  }
-
-  #contact .contact-icon-card strong{
-    font-size: .78rem !important;
-  }
-
-  #contact .contact-icon-card span:not(.contact-svg){
-    display: none !important;
-  }
+  #contact .contact-icons-grid{ grid-template-columns: repeat(3, 1fr) !important; gap: 10px !important; max-width: 100% !important; }
+  #contact .contact-icon-card{ min-height: 108px !important; padding: 15px 8px !important; border-radius: 18px !important; }
+  #contact .contact-svg{ width: 30px !important; height: 30px !important; margin-bottom: 6px !important; }
+  #contact .contact-icon-card strong{ font-size: .78rem !important; }
+  #contact .contact-icon-card span:not(.contact-svg){ display: none !important; }
 }
 
-
-/* ===== FINAL ABOUT BACKGROUND + SNAPSHOT CARD POLISH ONLY ===== */
-#about{
-  background:
-    radial-gradient(circle at 16% 18%, rgba(56,189,248,.09), transparent 32%),
-    radial-gradient(circle at 86% 72%, rgba(99,102,241,.10), transparent 36%),
-    linear-gradient(180deg, #05070d 0%, #071426 50%, #090d17 100%) !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-#about::before{
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  background:
-    linear-gradient(90deg, rgba(56,189,248,.02) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(56,189,248,.015) 1px, transparent 1px) !important;
-  background-size: 54px 54px !important;
-  opacity: .18 !important;
-  pointer-events: none !important;
-}
-
-#about::after{
-  content: "" !important;
-  position: absolute !important;
-  width: 480px !important;
-  height: 480px !important;
-  right: -250px !important;
-  top: 22% !important;
-  border-radius: 999px !important;
-  background: radial-gradient(circle, rgba(59,130,246,.16), rgba(124,58,237,.055) 42%, transparent 70%) !important;
-  filter: blur(8px) !important;
-  opacity: .62 !important;
-  pointer-events: none !important;
-}
-
-#about .wrap,
-#about .about-redesign{
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-#about .about-focus-card{
-  background: linear-gradient(145deg, rgba(8,18,38,.72), rgba(14,18,36,.50)) !important;
-  border: 1px solid rgba(56,189,248,.18) !important;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.025) inset,
-    0 28px 70px rgba(0,0,0,.22),
-    0 0 42px rgba(56,189,248,.055) !important;
-  backdrop-filter: blur(16px) !important;
-}
-
-#about .focus-pills span{
-  background: rgba(10,24,48,.72) !important;
-  border: 1px solid rgba(56,189,248,.28) !important;
-  color: rgba(248,250,252,.93) !important;
-  box-shadow: 0 0 16px rgba(56,189,248,.045) !important;
-}
-
-#about .about-info-mini div,
-#about .snapshot-card{
-  background: linear-gradient(135deg, rgba(10,20,42,.62), rgba(18,21,42,.46)) !important;
-  border: 1px solid rgba(56,189,248,.14) !important;
-  border-radius: 20px !important;
-  padding: 20px !important;
-  box-shadow: 0 12px 36px rgba(0,0,0,.12) !important;
-}
-
-#about .about-info-mini small,
-#about .snap-label{
-  color: rgba(56,189,248,.88) !important;
-  font-weight: 800 !important;
-}
-
-#about .about-info-mini strong,
-#about .snapshot-card strong{
-  color: #f8fafc !important;
-  font-weight: 900 !important;
-}
-
+/* ===== ABOUT BACKGROUND + SNAPSHOT POLISH ===== */
+#about{ background: radial-gradient(circle at 16% 18%, rgba(56,189,248,.09), transparent 32%), radial-gradient(circle at 86% 72%, rgba(99,102,241,.10), transparent 36%), linear-gradient(180deg, #05070d 0%, #071426 50%, #090d17 100%) !important; position: relative !important; overflow: hidden !important; }
+#about::before{ content: "" !important; position: absolute !important; inset: 0 !important; background: linear-gradient(90deg, rgba(56,189,248,.02) 1px, transparent 1px), linear-gradient(180deg, rgba(56,189,248,.015) 1px, transparent 1px) !important; background-size: 54px 54px !important; opacity: .18 !important; pointer-events: none !important; }
+#about::after{ content: "" !important; position: absolute !important; width: 480px !important; height: 480px !important; right: -250px !important; top: 22% !important; border-radius: 999px !important; background: radial-gradient(circle, rgba(59,130,246,.16), rgba(124,58,237,.055) 42%, transparent 70%) !important; filter: blur(8px) !important; opacity: .62 !important; pointer-events: none !important; }
+#about .wrap, #about .about-redesign{ position: relative !important; z-index: 1 !important; }
+#about .about-focus-card{ background: linear-gradient(145deg, rgba(8,18,38,.72), rgba(14,18,36,.50)) !important; border: 1px solid rgba(56,189,248,.18) !important; box-shadow: 0 0 0 1px rgba(255,255,255,.025) inset, 0 28px 70px rgba(0,0,0,.22), 0 0 42px rgba(56,189,248,.055) !important; backdrop-filter: blur(16px) !important; }
+#about .focus-pills span{ background: rgba(10,24,48,.72) !important; border: 1px solid rgba(56,189,248,.28) !important; color: rgba(248,250,252,.93) !important; box-shadow: 0 0 16px rgba(56,189,248,.045) !important; }
+#about .about-info-mini div, #about .snapshot-card{ background: linear-gradient(135deg, rgba(10,20,42,.62), rgba(18,21,42,.46)) !important; border: 1px solid rgba(56,189,248,.14) !important; border-radius: 20px !important; padding: 20px !important; box-shadow: 0 12px 36px rgba(0,0,0,.12) !important; }
+#about .about-info-mini small, #about .snap-label{ color: rgba(56,189,248,.88) !important; font-weight: 800 !important; }
+#about .about-info-mini strong, #about .snapshot-card strong{ color: #f8fafc !important; font-weight: 900 !important; }
 @media (max-width: 760px){
-  #about::after{
-    width: 360px !important;
-    height: 360px !important;
-    right: -215px !important;
-    top: 27% !important;
-    opacity: .55 !important;
-  }
-  #about .about-focus-card{
-    border-radius: 24px !important;
-    padding: 22px !important;
-  }
-  #about .about-info-mini,
-  #about .snapshot-grid{
-    grid-template-columns: 1fr !important;
-  }
+  #about::after{ width: 360px !important; height: 360px !important; right: -215px !important; top: 27% !important; opacity: .55 !important; }
+  #about .about-focus-card{ border-radius: 24px !important; padding: 22px !important; }
+  #about .about-info-mini, #about .snapshot-grid{ grid-template-columns: 1fr !important; }
 }
-
 </style>
-
-
 
 <style id="cert_title_patch">
-.cert-title{
-  text-align:center !important;
-  margin:38px 0 18px !important;
-  font-size:1.05rem !important;
-  font-weight:900 !important;
-  color:var(--cyan) !important;
-  letter-spacing:.05em !important;
-}
-.cert-title::before,
-.cert-title::after{
-  content:"" !important;
-  display:inline-block !important;
-  width:44px !important;
-  height:1px !important;
-  background:rgba(56,189,248,.55) !important;
-  margin:0 12px !important;
-  vertical-align:middle !important;
-}
+.cert-title{ text-align:center !important; margin:38px 0 18px !important; font-size:1.05rem !important; font-weight:900 !important; color:var(--cyan) !important; letter-spacing:.05em !important; }
+.cert-title::before, .cert-title::after{ content:"" !important; display:inline-block !important; width:44px !important; height:1px !important; background:rgba(56,189,248,.55) !important; margin:0 12px !important; vertical-align:middle !important; }
 @media(max-width:560px){
-  .cert-title{
-    margin:32px 0 16px !important;
-    font-size:.95rem !important;
-  }
-  .cert-title::before,
-  .cert-title::after{
-    width:32px !important;
-    margin:0 9px !important;
-  }
+  .cert-title{ margin:32px 0 16px !important; font-size:.95rem !important; }
+  .cert-title::before, .cert-title::after{ width:32px !important; margin:0 9px !important; }
 }
 </style>
-
+<style>
+/* hide the name/logo until the script font is ready (prevents the font flash) */
+html:not(.fonts-ready) .signature-name, html:not(.fonts-ready) .brand { visibility: hidden; }
+</style>
+<noscript><style>.signature-name,.brand{visibility:visible!important;}</style></noscript>
+<script>
+(function(){
+  var done=function(){document.documentElement.classList.add('fonts-ready');};
+  if(document.fonts && document.fonts.load){
+    Promise.race([document.fonts.load('700 1em "Dancing Script"'), new Promise(function(r){setTimeout(r,2500);})]).then(done,done);
+  } else { done(); }
+})();
+</script>
 </head>
 
 <body>
@@ -2531,71 +664,53 @@ html[lang="en"] .signature-sub{
       <div class="wv2-wrap reveal">
 
         <div class="wv2-copy">
-          <div class="wv2-eyebrow" data-ar="أهلًا، تعرّف على منهجيتي في الاختبار" data-en="Hi — get to know my testing approach">أهلًا، تعرّف على منهجيتي في الاختبار</div>
+          <div class="wv2-eyebrow" data-ar="أهلًا، أنا لطيفة" data-en="Hi — I’m Latifa">أهلًا، أنا لطيفة</div>
 
           <h2 class="wv2-title"
-              data-ar="أبحث عن <span class='wv2-grad'>الخلل،</span><br>قبل أن يصل إلى <span class='wv2-grad'>المستخدم.</span>"
-              data-en="I find the <span class='wv2-grad'>defect</span><br>before it reaches the <span class='wv2-grad'>user</span>">
-            أبحث عن <span class="wv2-grad">الخلل،</span><br>قبل أن يصل إلى <span class="wv2-grad">المستخدم.</span>
+              data-ar="أبني <span class='wv2-grad'>المنتج،</span><br>وأكتشف <span class='wv2-grad'>الخلل</span> قبل <span class='wv2-grad'>المستخدم.</span>"
+              data-en="I build the <span class='wv2-grad'>product,</span><br>and catch the <span class='wv2-grad'>defect</span> before the <span class='wv2-grad'>user</span>">
+            أبني <span class="wv2-grad">المنتج،</span><br>وأكتشف <span class="wv2-grad">الخلل</span> قبل <span class="wv2-grad">المستخدم.</span>
           </h2>
 
           <p class="wv2-text"
-             data-ar="أتعامل مع المتطلبات بعين المستخدم، أركّز على المسارات المهمة، ثم أوثّق الملاحظات بصورة قابلة للتنفيذ لتحسين المنتج."
-             data-en="I approach requirements from the user's perspective, focus on critical paths, then document findings in an actionable way to improve the product.">
-            أتعامل مع المتطلبات بعين المستخدم، أركّز على المسارات المهمة، ثم أوثّق الملاحظات بصورة قابلة للتنفيذ لتحسين المنتج.
+             data-ar="أنظر للمتطلبات بعين المستخدم، أركّز على المسارات المهمة، وأوثّق كل ملاحظة بصورة واضحة قابلة للتنفيذ."
+             data-en="I look at requirements through the user’s eyes, focus on the critical paths, and document every finding clearly and actionably.">
+            أنظر للمتطلبات بعين المستخدم، أركّز على المسارات المهمة، وأوثّق كل ملاحظة بصورة واضحة قابلة للتنفيذ.
           </p>
           <div class="wv2-stats welcome-stats">
             <div class="wv2-stat">
-              <div class="wv2-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-              <strong>STLC</strong>
-              <span data-ar="تصميم السيناريوهات" data-en="Scenario Design">تصميم السيناريوهات</span>
+              <div class="wv2-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+              <strong>DEV</strong>
+              <span data-ar="تطوير الويب" data-en="Web Development">تطوير الويب</span>
             </div>
             <div class="wv2-stat">
               <div class="wv2-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
-              <strong>QA/QC</strong>
+              <strong>QA</strong>
               <span data-ar="ضمان الجودة" data-en="Quality Assurance">ضمان الجودة</span>
             </div>
             <div class="wv2-stat">
               <div class="wv2-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 9l3-3 3 3"/><path d="M8 15l3 3 3-3"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
               <strong>API</strong>
-              <span data-ar="Postman اختبار" data-en="Postman Testing">Postman اختبار</span>
+              <span data-ar="REST وPostman" data-en="REST & Postman">REST وPostman</span>
             </div>
             <div class="wv2-stat">
-              <div class="wv2-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-              <strong>4</strong>
-              <span data-ar="أنظمة ويب" data-en="Web Systems">أنظمة ويب</span>
+              <div class="wv2-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"/></svg></div>
+              <strong>ISTQB</strong>
+              <span data-ar="معتمدة CTFL" data-en="CTFL Certified">معتمدة CTFL</span>
             </div>
             <div class="wv2-stat">
               <div class="wv2-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/></svg></div>
-            <strong>3</strong>
-<span data-ar="مشاريع" data-en="Projects">مشاريع</span>
+              <strong>4</strong>
+              <span data-ar="مشاريع" data-en="Projects">مشاريع</span>
             </div>
           </div>
 
-<div class="wv2-btns">
-  <a class="btn btn-primary wv2-btn"
-     href="#projects"
-     data-ar="استعرض الأعمال"
-     data-en="Explore Projects">
-  </a>
-
-  <a class="wv2-cv-btn"
-     href="Latifa_Alanazi_CV.pdf"
-     target="_blank"
-     data-ar="عرض السيرة"
-     data-en="View CV">
-  </a>
-
-  <a class="wv2-cv-btn"
-     href="Latifa_Alanazi_CV.pdf"
-     download
-     data-ar="تحميل السيرة"
-     data-en="Download CV">
-  </a>
-</div>
+          <div class="wv2-btns">
+            <a class="btn primary wv2-btn" href="#projects" data-ar="استعرض الأعمال" data-en="Explore Projects">استعرض الأعمال</a>
+            <a class="wv2-cv-btn" href="./Latifa_Alanazi_CV.pdf" target="_blank" rel="noopener" data-ar="عرض السيرة" data-en="View CV">عرض السيرة</a>
+            <a class="wv2-cv-btn" href="./Latifa_Alanazi_CV.pdf" download="Latifa_Alanazi_CV.pdf" data-ar="تحميل السيرة" data-en="Download CV">تحميل السيرة</a>
+          </div>
         </div>
-
-
 
       </div>
     </section>
@@ -2605,36 +720,37 @@ html[lang="en"] .signature-sub{
         <div class="about-main reveal">
           <div class="eyebrow" data-ar="من أنا؟" data-en="About Me">من أنا؟</div>
           <h2 class="section-title"
-              data-ar="مهندسة برمجيات<br>بعقلية تركّز على الجودة."
-              data-en="A Software Engineer<br>with a quality mindset.">
-            مهندسة برمجيات<br>بعقلية تركّز على الجودة.
+              data-ar="من الكود<br>إلى الجودة."
+              data-en="From code<br>to quality.">
+            من الكود<br>إلى الجودة.
           </h2>
 
           <p class="lead"
-             data-ar="مهندسة برمجيات حاصلة على شهادة ISTQB CTFL، مهتمة بجودة البرمجيات، الاختبار اليدوي وAPI، وتحسين تجربة المستخدم من خلال تحليل المتطلبات وتوثيق الملاحظات بوضوح."
-             data-en="Software Engineer and ISTQB CTFL certified, interested in software quality, manual and API testing, and improving user experience through requirements analysis and clear defect documentation.">
-            مهندسة برمجيات حاصلة على شهادة ISTQB CTFL، مهتمة بجودة البرمجيات، الاختبار اليدوي وAPI، وتحسين تجربة المستخدم من خلال تحليل المتطلبات وتوثيق الملاحظات بوضوح.
+             data-ar="خريجة هندسة برمجيات من جامعة حائل (دفعة 2026) وحاصلة على شهادة ISTQB CTFL، لدي خبرة عملية في تطوير الويب وضمان جودة البرمجيات من خلال التدريب والمشاريع الأكاديمية والشخصية، مع تركيز على بناء برمجيات موثوقة واختبارها."
+             data-en="Software Engineering graduate from the University of Hail (Class of 2026) and ISTQB CTFL certified, with hands-on experience in web development and software quality assurance through internship, academic and personal projects, focused on building and testing reliable software.">
+            خريجة هندسة برمجيات من جامعة حائل (دفعة 2026) وحاصلة على شهادة ISTQB CTFL، لدي خبرة عملية في تطوير الويب وضمان جودة البرمجيات من خلال التدريب والمشاريع الأكاديمية والشخصية، مع تركيز على بناء برمجيات موثوقة واختبارها.
           </p>
         </div>
 
         <div class="about-focus-card reveal">
-          <div class="focus-title" data-ar="مجالات أركز عليها" data-en="Profile Snapshot">مجالات أركز عليها</div>
+          <div class="focus-title" data-ar="نبذة سريعة" data-en="Quick Facts">نبذة سريعة</div>
 
-          <div class="focus-pills">
-            <span data-ar="اختبار يدوي" data-en="Manual Testing">اختبار يدوي</span>
-            <span data-ar="اختبار API" data-en="API Testing">اختبار API</span>
-            <span data-ar="تتبع العيوب" data-en="Defect Tracking">تتبع العيوب</span>
-            <span data-ar="تحليل المتطلبات" data-en="Requirements Analysis">تحليل المتطلبات</span>
-          </div>
-
-          <div class="about-info-mini">
+          <div class="about-info-mini" style="margin-top:0 !important;">
             <div>
               <small data-ar="التعليم" data-en="Education">التعليم</small>
-              <strong data-ar="جامعة حائل" data-en="University of Hail">جامعة حائل</strong>
+              <strong data-ar="بكالوريوس هندسة برمجيات — جامعة حائل (2026)" data-en="B.Sc. Software Engineering — University of Hail (2026)">بكالوريوس هندسة برمجيات — جامعة حائل (2026)</strong>
             </div>
             <div>
-              <small data-ar="التركيز" data-en="Focus">التركيز</small>
-              <strong data-ar="ضمان الجودة واختبار البرمجيات" data-en="QA / Software Testing">ضمان الجودة واختبار البرمجيات</strong>
+              <small data-ar="الشهادة" data-en="Certification">الشهادة</small>
+              <strong>ISTQB CTFL v4.0</strong>
+            </div>
+            <div>
+              <small data-ar="اللغات" data-en="Languages">اللغات</small>
+              <strong data-ar="العربية (الأم) · الإنجليزية (مهنية)" data-en="Arabic (Native) · English (Professional)">العربية (الأم) · الإنجليزية (مهنية)</strong>
+            </div>
+            <div>
+              <small data-ar="الموقع" data-en="Location">الموقع</small>
+              <strong data-ar="حائل / الرياض" data-en="Hail / Riyadh">حائل / الرياض</strong>
             </div>
           </div>
         </div>
@@ -2645,7 +761,7 @@ html[lang="en"] .signature-sub{
       <div class="wrap">
         <div class="reveal" style="text-align: center;">
           <div class="eyebrow" data-ar="الخبرة العملية" data-en="Experience">الخبرة العملية</div>
-          <h2 class="section-title" data-ar="اختبار في بيئات حقيقية." data-en="Testing in real environments.">اختبار في بيئات حقيقية.</h2>
+          <h2 class="section-title" data-ar="خبرة في بيئات حقيقية." data-en="Experience in real environments.">خبرة في بيئات حقيقية.</h2>
         </div>
 
         <div class="stack">
@@ -2664,8 +780,6 @@ html[lang="en"] .signature-sub{
               <div class="bullet" data-ar="وثّقت العيوب باستخدام Excel مع توضيح الحالة، الخطورة، والنتيجة المتوقعة والفعلية." data-en="Reported defects using Excel with clear status, severity, expected results, and actual results.">وثّقت العيوب باستخدام Excel مع توضيح الحالة، الخطورة، والنتيجة المتوقعة والفعلية.</div>
               <div class="bullet" data-ar="أعدت الاختبار بعد الإصلاحات للتحقق من الحل وتقليل احتمالية الانحدار." data-en="Retested fixes to verify resolution and reduce regression risk.">أعدت الاختبار بعد الإصلاحات للتحقق من الحل وتقليل احتمالية الانحدار.</div>
             </div>
-
-
           </article>
 
           <article class="card reveal">
@@ -2693,38 +807,44 @@ html[lang="en"] .signature-sub{
           <h2 class="section-title" data-ar="ما أعمل عليه." data-en="What I work with.">ما أعمل عليه.</h2>
         </div>
 
-        
-<div class="skills-showcase reveal">
+        <div class="skills-showcase reveal">
           <div class="skills-group">
-            <h3 data-ar="نقاط القوة" data-en="Core Strengths">نقاط القوة</h3>
+            <h3 data-ar="التطوير" data-en="Development">التطوير</h3>
             <div class="skill-pills">
-              <span data-ar="اختبار البرمجيات" data-en="Software Testing">اختبار البرمجيات</span>
-              <span data-ar="حالات الاختبار" data-en="Test Cases">حالات الاختبار</span>
-              <span data-ar="التحقق من الجودة" data-en="QA Validation">التحقق من الجودة</span>
-              <span data-ar="توثيق العيوب" data-en="Defect Documentation">توثيق العيوب</span>
+              <span>Angular</span>
+              <span>TypeScript</span>
+              <span>JavaScript</span>
+              <span>HTML / CSS</span>
+              <span>Python</span>
+              <span>FastAPI</span>
+              <span>Flask</span>
+              <span>REST APIs</span>
+              <span>SQL</span>
             </div>
           </div>
 
           <div class="skills-group">
-            <h3 data-ar="الأدوات" data-en="Tools I Use">الأدوات</h3>
-           <div class="skill-pills">
-  <span>Postman</span>
-  <span>Playwright</span>
-  <span>Azure DevOps</span>
-  <span>Git / GitHub</span>
-</div>
+            <h3 data-ar="الاختبار" data-en="Testing">الاختبار</h3>
+            <div class="skill-pills">
+              <span data-ar="اختبار يدوي" data-en="Manual Testing">اختبار يدوي</span>
+              <span data-ar="اختبار API" data-en="API Testing">اختبار API</span>
+              <span>Postman</span>
+              <span>Playwright</span>
+              <span data-ar="تصميم حالات الاختبار" data-en="Test Case Design">تصميم حالات الاختبار</span>
+              <span data-ar="توثيق العيوب" data-en="Defect Reporting">توثيق العيوب</span>
+            </div>
           </div>
 
           <div class="skills-group">
-            <h3 data-ar="المعرفة التقنية" data-en="Technical Exposure">المعرفة التقنية</h3>
+            <h3 data-ar="الأدوات والمنهجيات" data-en="Tools & Methods">الأدوات والمنهجيات</h3>
             <div class="skill-pills">
-  <span>SDLC</span>
-  <span>STLC</span>
-  <span>Agile</span>
-  <span data-ar="استعلامات SQL" data-en="SQL Queries">استعلامات SQL</span>
-  <span>HTML / CSS</span>
-  <span>JavaScript</span>
-</div>
+              <span>Git / GitHub</span>
+              <span>Azure DevOps</span>
+              <span>Agile</span>
+              <span>SDLC / STLC</span>
+              <span>Render</span>
+              <span>Prompt Engineering</span>
+            </div>
           </div>
         </div>
 
@@ -2746,6 +866,14 @@ html[lang="en"] .signature-sub{
               <div class="cert-s">Alison</div>
             </div>
           </div>
+
+          <div class="cert-p">
+            <div class="cert-ico">✓</div>
+            <div>
+              <div class="cert-t">Craft Precise Prompts for AI Models</div>
+              <div class="cert-s">IBM SkillsBuild</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -2754,74 +882,76 @@ html[lang="en"] .signature-sub{
       <div class="wrap">
         <div class="reveal" style="text-align: center;">
           <div class="eyebrow" data-ar="المشاريع" data-en="Projects">المشاريع</div>
-          <h2 class="section-title" data-ar="مشاريع طبقت من خلالها مفاهيم الجودة واختبار البرمجيات" data-en="Projects where I applied software quality and testing practices">أحد مشاريعي لخدمة المهتمين بالجودة</h2>
+          <h2 class="section-title" data-ar="مشاريع بنيتها واختبرتها" data-en="Projects I built and tested">مشاريع بنيتها واختبرتها</h2>
         </div>
 
         <div class="projects-grid" style="grid-template-columns:repeat(2,1fr);max-width:1000px;margin-left:auto;margin-right:auto;">
           <article class="card project-card reveal">
             <div>
               <div class="project-head">
-                <h3>Quality Hub System</h3>
-                <span class="status featured" data-ar="مميز" data-en="Featured">مميز</span>
+                <h3>SparkHub</h3>
+                <span class="status featured" data-ar="مشروع التخرج" data-en="Graduation Project">مشروع التخرج</span>
               </div>
-             <p
-data-ar="نظام لإدارة حالات الاختبار وتقارير العيوب، يتيح إنشاء وتتبع الاختبارات وتوثيق الأخطاء مع اختبار واجهات API باستخدام Postman وتطبيق ممارسات ضمان الجودة الواقعية."
-data-en="A quality assurance system for managing test cases and defect reports, enabling test tracking, bug documentation, and API testing using Postman while applying real-world QA practices.">
-نظام لإدارة حالات الاختبار وتقارير العيوب، يتيح إنشاء وتتبع الاختبارات وتوثيق الأخطاء مع اختبار واجهات API باستخدام Postman وتطبيق ممارسات ضمان الجودة الواقعية.
-</p>
+              <p data-ar="منصة ذكية لإدارة الأندية الطلابية والفعاليات (مشروع فريق). طوّرت واجهات ويب متجاوبة بـ Angular وTypeScript مع ربطها بـ REST APIs، وساهمت في الاختبار وتصميم حالات الاختبار وتوثيق العيوب عبر Azure DevOps." data-en="A smart platform for managing student clubs and events (team project). Built responsive web interfaces with Angular and TypeScript integrated with REST APIs, and contributed to testing, test case design, and defect tracking via Azure DevOps.">منصة ذكية لإدارة الأندية الطلابية والفعاليات (مشروع فريق). طوّرت واجهات ويب متجاوبة بـ Angular وTypeScript مع ربطها بـ REST APIs، وساهمت في الاختبار وتصميم حالات الاختبار وتوثيق العيوب عبر Azure DevOps.</p>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Angular</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Azure DevOps</span>
+              <span class="tag">Playwright</span>
+            </div>
+          </article>
+
+          <article class="card project-card reveal">
+            <div>
+              <div class="project-head">
+                <h3>Bayyin</h3>
+                <span class="status" data-ar="مشروع شخصي" data-en="Personal Project">مشروع شخصي</span>
+              </div>
+              <p data-ar="منصة ويب للتوثيق الذكي والتحقق من النصوص، تعتمد على البحث الدلالي في مصادر مفهرسة، مع ربط الواجهة بالخدمات الخلفية ونشرها على Render وضبط سلوك نموذج اللغة لتقليل الإجابات غير المدعومة." data-en="A smart documentation and text verification platform using semantic search over indexed sources, with the frontend integrated to backend services, deployed on Render, and LLM behavior tuned to minimize unsupported responses.">منصة ويب للتوثيق الذكي والتحقق من النصوص، تعتمد على البحث الدلالي في مصادر مفهرسة، مع ربط الواجهة بالخدمات الخلفية ونشرها على Render وضبط سلوك نموذج اللغة لتقليل الإجابات غير المدعومة.</p>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">LLM</span>
+              <span class="tag">Render</span>
+            </div>
+          </article>
+
+          <article class="card project-card reveal">
+            <div>
+              <div class="project-head">
+                <h3>Quality Hub</h3>
+                <span class="status" data-ar="مشروع شخصي" data-en="Personal Project">مشروع شخصي</span>
+              </div>
+              <p data-ar="بوابة لإدارة حالات الاختبار وتقارير العيوب مبنية بـ Flask وSQLite مع مصادقة JWT واختبار تدريبي، وتم اختبار واجهاتها البرمجية باستخدام Postman." data-en="A portal for managing test cases and bug reports built with Flask and SQLite, with JWT authentication and a practice quiz; its APIs were tested using Postman.">بوابة لإدارة حالات الاختبار وتقارير العيوب مبنية بـ Flask وSQLite مع مصادقة JWT واختبار تدريبي، وتم اختبار واجهاتها البرمجية باستخدام Postman.</p>
             </div>
             <div class="project-tags">
               <span class="tag">Flask</span>
               <span class="tag">SQLite</span>
               <span class="tag">JWT</span>
               <span class="tag">Postman</span>
-              <span class="tag">Testing</span>
+              <span class="tag">API Testing</span>
             </div>
           </article>
+
           <article class="card project-card reveal">
-  <div>
-    <div class="project-head">
-      <h3>SparkHub</h3>
-      <span class="status">2026</span>
-    </div>
-
-    <p
-    data-ar="منصة ذكية لإدارة الأندية الطلابية والفعاليات، شاركت في تطوير الواجهة الأمامية واختبار الوظائف وتوثيق العيوب باستخدام Azure DevOps."
-    data-en="An intelligent platform for managing student clubs and events. Contributed to frontend development, functional testing, and defect tracking using Azure DevOps.">
-    منصة ذكية لإدارة الأندية الطلابية والفعاليات، شاركت في تطوير الواجهة الأمامية واختبار الوظائف وتوثيق العيوب باستخدام Azure DevOps.
-    </p>
-  </div>
-
-  <div class="project-tags">
-    <span class="tag">Angular</span>
-    <span class="tag">Azure DevOps</span>
-    <span class="tag">QA</span>
-    <span class="tag">Playwright</span>
-    <span class="tag">Testing</span>
-  </div>
-</article>
-          <article class="card project-card reveal">
-  <div>
-    <div class="project-head">
-      <h3>Buggy Bank</h3>
-      <span class="status">QA Practice</span>
-    </div>
-
-    <p
-data-ar="موقع تدريبي صممته لمحاكاة سيناريوهات اختبار حقيقية، يحتوي على عيوب وظيفية مقصودة تساعد على ممارسة الاختبار الاستكشافي وتوثيق الأخطاء."
-data-en="A training website designed to simulate real testing scenarios with intentionally seeded defects for exploratory testing and bug reporting practice.">
-موقع تدريبي صممته لمحاكاة سيناريوهات اختبار حقيقية، يحتوي على عيوب وظيفية مقصودة تساعد على ممارسة الاختبار الاستكشافي وتوثيق الأخطاء.
-</p>
-  </div>
-
-  <div class="project-tags">
-  <span class="tag">QA</span>
-  <span class="tag">Exploratory Testing</span>
-  <span class="tag">Bug Reporting</span>
-  <span class="tag">Test Scenarios</span>
-  <span class="tag">Portfolio Project</span>
-</div>
-</article>
+            <div>
+              <div class="project-head">
+                <h3>Buggy Bank</h3>
+                <span class="status" data-ar="مشروع شخصي" data-en="Personal Project">مشروع شخصي</span>
+              </div>
+              <p data-ar="تطبيق ويب بنكي تجريبي بـ HTML وCSS وJavaScript يحتوي على عيوب مقصودة لمحاكاة سيناريوهات اختبار حقيقية وممارسة الاختبار الاستكشافي وتوثيق الأخطاء." data-en="An experimental banking web app in HTML, CSS, and JavaScript with intentionally seeded defects to simulate real testing scenarios and practice exploratory testing and bug reporting.">تطبيق ويب بنكي تجريبي بـ HTML وCSS وJavaScript يحتوي على عيوب مقصودة لمحاكاة سيناريوهات اختبار حقيقية وممارسة الاختبار الاستكشافي وتوثيق الأخطاء.</p>
+            </div>
+            <div class="project-tags">
+              <span class="tag">HTML / CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Exploratory Testing</span>
+              <span class="tag">Bug Reporting</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -2832,14 +962,14 @@ data-en="A training website designed to simulate real testing scenarios with int
           <div class="eyebrow" data-ar="للتواصل" data-en="Contact">للتواصل</div>
           <h2 class="section-title" data-ar="شكرًا لك على وقتك." data-en="Thank you for your time.">شكرًا لك على وقتك.</h2>
           <p class="lead" style="margin-inline:auto;"
-             data-ar="متاحة لفرص العمل والتعاون المهني في هندسة البرمجيات واختبار البرمجيات."
-             data-en="Open to professional opportunities and collaboration in Software Engineering and Software Testing.">
-            متاحة لفرص العمل والتعاون المهني في هندسة البرمجيات واختبار البرمجيات.
+             data-ar="متاحة لفرص العمل والتعاون المهني في هندسة البرمجيات وضمان الجودة."
+             data-en="Open to professional opportunities and collaboration in Software Engineering and Quality Assurance.">
+            متاحة لفرص العمل والتعاون المهني في هندسة البرمجيات وضمان الجودة.
           </p>
           <p class="contact-tagline"
-             data-ar="لنبني جودةً أفضل معًا"
-             data-en="Let’s build better quality together.">
-            لنبني جودةً أفضل معًا
+             data-ar="لنبني برمجيات أفضل معًا"
+             data-en="Let’s build better software together.">
+            لنبني برمجيات أفضل معًا
           </p>
         </div>
 
@@ -2953,7 +1083,6 @@ data-en="A training website designed to simulate real testing scenarios with int
       revealEls.forEach(el => observer.observe(el));
     }
 
-
     document.querySelectorAll('.tilt-card').forEach((card) => {
       card.addEventListener('mousemove', (event) => {
         const rect = card.getBoundingClientRect();
@@ -2988,67 +1117,65 @@ data-en="A training website designed to simulate real testing scenarios with int
     }
   </script>
 
+  <script>
+    /* Final mobile interactions */
+    (function(){
+      const typingEl = document.querySelector('.signature-typing');
+      const phrases = {
+        ar: ['مهندسة برمجيات', 'مهندسة جودة (QA)', 'مطوّرة ويب'],
+        en: ['Software Engineer', 'QA Engineer', 'Web Developer']
+      };
 
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
 
-<script>
-/* Final mobile interactions */
-(function(){
-  const typingEl = document.querySelector('.signature-typing');
-  const phrases = {
-    ar: ['مختبرة برمجيات', 'مهندسة برمجيات', 'مهتمة بجودة المنتج'],
-    en: ['Certified Software Tester', 'Software Engineer', 'Quality-minded Builder']
-  };
-
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
-
-  function currentLang(){
-    return document.documentElement.lang === 'en' ? 'en' : 'ar';
-  }
-
-  function typeLoop(){
-    if(!typingEl) return;
-    const list = phrases[currentLang()];
-    const phrase = list[phraseIndex % list.length];
-
-    if(!deleting){
-      charIndex++;
-      typingEl.textContent = phrase.slice(0, charIndex);
-      if(charIndex >= phrase.length){
-        deleting = true;
-        setTimeout(typeLoop, 1200);
-        return;
+      function currentLang(){
+        return document.documentElement.lang === 'en' ? 'en' : 'ar';
       }
-    } else {
-      charIndex--;
-      typingEl.textContent = phrase.slice(0, charIndex);
-      if(charIndex <= 0){
-        deleting = false;
-        phraseIndex++;
+
+      function typeLoop(){
+        if(!typingEl) return;
+        const list = phrases[currentLang()];
+        const phrase = list[phraseIndex % list.length];
+
+        if(!deleting){
+          charIndex++;
+          typingEl.textContent = phrase.slice(0, charIndex);
+          if(charIndex >= phrase.length){
+            deleting = true;
+            setTimeout(typeLoop, 1200);
+            return;
+          }
+        } else {
+          charIndex--;
+          typingEl.textContent = phrase.slice(0, charIndex);
+          if(charIndex <= 0){
+            deleting = false;
+            phraseIndex++;
+          }
+        }
+        setTimeout(typeLoop, deleting ? 45 : 75);
       }
-    }
-    setTimeout(typeLoop, deleting ? 45 : 75);
-  }
-  typeLoop();
+      typeLoop();
 
-  // Mobile accordion for experience cards
-  document.querySelectorAll('#experience .card').forEach(card => {
-    card.addEventListener('click', function(e){
-      if(window.innerWidth > 760) return;
-      card.classList.toggle('open');
-    });
-  });
+      // Mobile accordion for experience cards
+      document.querySelectorAll('#experience .card').forEach(card => {
+        card.addEventListener('click', function(e){
+          if(window.innerWidth > 760) return;
+          card.classList.toggle('open');
+        });
+      });
 
-  // Touch glow for interactive elements
-  const tapTargets = document.querySelectorAll('.skill-pills span, .focus-pills span, .contact-card, .cert-p');
-  tapTargets.forEach(el => {
-    el.addEventListener('touchstart', () => el.classList.add('is-tapped'), {passive:true});
-    el.addEventListener('touchend', () => setTimeout(() => el.classList.remove('is-tapped'), 180), {passive:true});
-    el.addEventListener('touchcancel', () => el.classList.remove('is-tapped'), {passive:true});
-  });
-})();
-</script>
+      // Touch glow for interactive elements
+      const tapTargets = document.querySelectorAll('.skill-pills span, .focus-pills span, .contact-card, .cert-p');
+      tapTargets.forEach(el => {
+        el.addEventListener('touchstart', () => el.classList.add('is-tapped'), {passive:true});
+        el.addEventListener('touchend', () => setTimeout(() => el.classList.remove('is-tapped'), 180), {passive:true});
+        el.addEventListener('touchcancel', () => el.classList.remove('is-tapped'), {passive:true});
+      });
+    })();
+  </script>
 
 </body>
 </html>
